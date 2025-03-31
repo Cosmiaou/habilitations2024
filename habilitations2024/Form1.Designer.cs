@@ -28,13 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lstNoms = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
+            // 
+            // lstNoms
+            // 
+            this.lstNoms.FormattingEnabled = true;
+            this.lstNoms.Location = new System.Drawing.Point(12, 12);
+            this.lstNoms.Name = "lstNoms";
+            this.lstNoms.Size = new System.Drawing.Size(344, 212);
+            this.lstNoms.TabIndex = 0;
+            this.lstNoms.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(368, 314);
+            this.Controls.Add(this.lstNoms);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -43,6 +54,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox lstNoms;
     }
 }
 

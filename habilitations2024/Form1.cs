@@ -18,9 +18,35 @@ namespace habilitations2024
             InitializeComponent();
         }
 
+        string connectionString = "Server=localhost;Database=habilitations;User Id=habilitations;Password=motdepasseuser;";
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            string query = "SELECT nom FROM developpeur";
 
+            try
+            {
+                MySqlConnection connection = new MySqlConnection(connectionString);
+
+                connection.Open();
+
+                MySqlCommand recupererNom = new MySqlCommand(query, connection);
+
+                MySqlDataReader reader = recupererNom.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lstNoms.Items.Add(reader["nom"].ToString());
+                }
+
+            } catch
+            {
+                MessageBox.Show("Erreur :");
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }
