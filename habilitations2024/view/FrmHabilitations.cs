@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using habilitations2024.bddmanager;
 
 namespace habilitations2024.view
 {

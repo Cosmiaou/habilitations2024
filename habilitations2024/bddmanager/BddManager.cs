@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace habilitations2024
+namespace habilitations2024.bddmanager
+
 {
     internal class BddManager
     {
