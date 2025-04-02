@@ -30,6 +30,7 @@ namespace habilitations2024.view
 
         private void afficherTout()
         {
+            lstNoms.Items.Clear();
             string query = "SELECT * FROM developpeur";
 
             try
