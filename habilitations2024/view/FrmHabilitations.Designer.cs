@@ -1,6 +1,6 @@
-﻿namespace habilitations2024
+﻿namespace habilitations2024.view
 {
-    partial class Form1
+    partial class FrmHabilitations
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -78,7 +78,7 @@
             this.txbID.TabIndex = 4;
             this.txbID.Text = "ID";
             // 
-            // Form1
+            // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -88,8 +88,8 @@
             this.Controls.Add(this.txbPrenom);
             this.Controls.Add(this.testInsert);
             this.Controls.Add(this.lstNoms);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FrmHabilitations";
+            this.Text = "Habilitations V0.3";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
