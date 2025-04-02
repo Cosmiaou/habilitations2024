@@ -10,10 +10,26 @@ namespace habilitations2024.bddmanager
 {
     internal class BddManager
     {
+        /// <summary>
+        /// Instance unique de la classe
+        /// </summary>
         private static BddManager instance = null;
+
+        /// <summary>
+        /// Objet de connexion
+        /// </summary>
         private static MySqlConnection connection;
+
+        /// <summary>
+        /// Locker pour supporter le multithread - pas forcément nécessaire
+        /// </summary>
         private static readonly object locker = new object();
 
+
+        /// <summary>
+        /// Constructeur privé qui crée la connexion à la DB
+        /// </summary>
+        /// <param name="chaineConnection">chaine de connexion</param>
         private BddManager(string chaineConnection) {
             connection = new MySqlConnection(chaineConnection);
 
@@ -22,6 +38,11 @@ namespace habilitations2024.bddmanager
             connection.Open();
         }
 
+        /// <summary>
+        /// Création d'une seule instance selon le patron singleton. Supporte le multithreading
+        /// </summary>
+        /// <param name="chaineConnection"></param>
+        /// <returns></returns>
         public static BddManager getInstance(string chaineConnection)
         {
             if (BddManager.instance == null)
@@ -37,6 +58,11 @@ namespace habilitations2024.bddmanager
             return BddManager.instance;
         }
 
+        /// <summary>
+        /// Exécution de toutes requêtes autre que "select"
+        /// </summary>
+        /// <param name="requete">requète SQL demandée</param>
+        /// <param name="parameters">paramètres sour forme d'un dictionnaire (null par défaut)</param>
         public void reqUpdate (string requete, Dictionary<string, object> parameters = null) {
 
             MySqlCommand commande = new MySqlCommand(requete, connection);
