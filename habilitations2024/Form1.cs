@@ -22,7 +22,12 @@ namespace habilitations2024
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string query = "SELECT nom FROM developpeur";
+            afficherTout();
+        }
+
+        private void afficherTout()
+        {
+            string query = "SELECT * FROM developpeur";
 
             try
             {
@@ -39,7 +44,8 @@ namespace habilitations2024
                     lstNoms.Items.Add(reader["nom"].ToString());
                 }
 
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("Erreur :");
             }
@@ -47,6 +53,24 @@ namespace habilitations2024
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void testInsert_Click(object sender, EventArgs e)
+        {
+            BddManager connexion = BddManager.getInstance(connectionString);
+
+            string request = "INSERT INTO developpeur (idprofil, prenom, nom) VALUES (@idprofil, @prenom, @nom);";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@idprofil", "5");
+            parameters.Add("@prenom", txbPrenom.Text);
+            parameters.Add("@nom", txbNom.Text);
+
+            connexion.reqUpdate(request, parameters);
+
+            afficherTout();
+
         }
     }
 }
