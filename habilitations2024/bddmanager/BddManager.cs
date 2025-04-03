@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace habilitations2024.bddmanager
@@ -18,7 +20,7 @@ namespace habilitations2024.bddmanager
         /// <summary>
         /// Objet de connexion
         /// </summary>
-        private static MySqlConnection connection;
+        private readonly MySqlConnection connection;
 
         /// <summary>
         /// Locker pour supporter le multithread - pas forcément nécessaire
@@ -30,7 +32,8 @@ namespace habilitations2024.bddmanager
         /// Constructeur privé qui crée la connexion à la DB
         /// </summary>
         /// <param name="chaineConnection">chaine de connexion</param>
-        private BddManager(string chaineConnection) {
+        private BddManager(string chaineConnection)
+        {
             connection = new MySqlConnection(chaineConnection);
 
             instance = this;
@@ -63,7 +66,8 @@ namespace habilitations2024.bddmanager
         /// </summary>
         /// <param name="requete">requète SQL demandée</param>
         /// <param name="parameters">paramètres sour forme d'un dictionnaire (null par défaut)</param>
-        public void reqUpdate (string requete, Dictionary<string, object> parameters = null) {
+        public void reqUpdate(string requete, Dictionary<string, object> parameters = null)
+        {
 
             MySqlCommand commande = new MySqlCommand(requete, connection);
 
@@ -81,6 +85,35 @@ namespace habilitations2024.bddmanager
             commande.ExecuteNonQuery();
         }
 
+        public List<Object[]> reqSelect(string requete, Dictionary<string, object> parameters = null)
+        {
+            MySqlCommand commande = new MySqlCommand(requete, connection);
 
+            //Gestion des paramètres
+            if (parameters != null)
+            {
+                foreach (KeyValuePair<string, object> element in parameters)
+                {
+                    commande.Parameters.Add(new MySqlParameter(element.Key, element.Value));
+                }
+            }
+
+            commande.Prepare();
+
+            MySqlDataReader reader = commande.ExecuteReader();
+            int nbCols = reader.FieldCount;
+
+            List<Object[]> liste = new List<object[]>();
+
+            while (reader.Read())
+            {
+                Object[] attributs = new Object[nbCols];
+                reader.GetValues(attributs);
+                liste.Add(attributs);
+            } 
+
+            reader.Close();
+            return liste;
+        }
     }
 }

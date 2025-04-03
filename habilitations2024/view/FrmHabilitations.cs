@@ -31,28 +31,20 @@ namespace habilitations2024.view
         private void afficherTout()
         {
             lstNoms.Items.Clear();
-            string query = "SELECT * FROM developpeur";
 
-            try
+            BddManager connexion = BddManager.getInstance(connectionString);
+
+            string request = "SELECT * FROM DEVELOPPEUR;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            List<Object[]> liste = connexion.reqSelect(request, parameters);
+
+            for (int i = 0; i < liste.Count; i++)
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
-
-                connection.Open();
-
-                MySqlCommand recupererNom = new MySqlCommand(query, connection);
-
-                MySqlDataReader reader = recupererNom.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    lstNoms.Items.Add(reader["nom"].ToString());
-                }
-
+                lstNoms.Items.Add(liste[i].ToString());
             }
-            catch
-            {
-                MessageBox.Show("Erreur :");
-            }
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
