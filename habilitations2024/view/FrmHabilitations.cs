@@ -30,7 +30,6 @@ namespace habilitations2024.view
 
         private void afficherTout()
         {
-            lstNoms.Items.Clear();
 
             BddManager connexion = BddManager.getInstance(connectionString);
 
@@ -39,11 +38,6 @@ namespace habilitations2024.view
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
             List<Object[]> liste = connexion.reqSelect(request, parameters);
-
-            for (int i = 0; i < liste.Count; i++)
-            {
-                lstNoms.Items.Add(liste[i].ToString());
-            }
 
         }
 
@@ -68,5 +62,23 @@ namespace habilitations2024.view
             afficherTout();
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
+
+

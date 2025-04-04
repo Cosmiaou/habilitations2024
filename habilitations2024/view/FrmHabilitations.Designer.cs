@@ -28,81 +28,321 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstNoms = new System.Windows.Forms.ListBox();
-            this.testInsert = new System.Windows.Forms.Button();
-            this.txbPrenom = new System.Windows.Forms.TextBox();
+            this.grbDevs = new System.Windows.Forms.GroupBox();
+            this.grbAjouterDev = new System.Windows.Forms.GroupBox();
+            this.grbPassword = new System.Windows.Forms.GroupBox();
+            this.lblindiquezMdp = new System.Windows.Forms.Label();
+            this.lblRepeterMdp = new System.Windows.Forms.Label();
+            this.txbRepetezMdp = new System.Windows.Forms.TextBox();
+            this.txbIndiquezMdp = new System.Windows.Forms.TextBox();
+            this.txbAnnuler = new System.Windows.Forms.Button();
+            this.btnEnregistrer = new System.Windows.Forms.Button();
+            this.btnModifierItem = new System.Windows.Forms.Button();
+            this.btnSupprimer = new System.Windows.Forms.Button();
+            this.btnEditPwd = new System.Windows.Forms.Button();
+            this.btnAjouterDev = new System.Windows.Forms.Button();
+            this.btnAnnulerDev = new System.Windows.Forms.Button();
+            this.lblNom = new System.Windows.Forms.Label();
             this.txbNom = new System.Windows.Forms.TextBox();
-            this.txbID = new System.Windows.Forms.TextBox();
+            this.lblPrenom = new System.Windows.Forms.Label();
+            this.txbPrenom = new System.Windows.Forms.TextBox();
+            this.txbMail = new System.Windows.Forms.TextBox();
+            this.txbTel = new System.Windows.Forms.TextBox();
+            this.cmbProfil = new System.Windows.Forms.ComboBox();
+            this.lblProfil = new System.Windows.Forms.Label();
+            this.lblMail = new System.Windows.Forms.Label();
+            this.lblTel = new System.Windows.Forms.Label();
+            this.dgwDonnees = new System.Windows.Forms.DataGridView();
+            this.grbDevs.SuspendLayout();
+            this.grbAjouterDev.SuspendLayout();
+            this.grbPassword.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).BeginInit();
             this.SuspendLayout();
             // 
-            // lstNoms
+            // grbDevs
             // 
-            this.lstNoms.FormattingEnabled = true;
-            this.lstNoms.Location = new System.Drawing.Point(12, 12);
-            this.lstNoms.Name = "lstNoms";
-            this.lstNoms.Size = new System.Drawing.Size(344, 173);
-            this.lstNoms.TabIndex = 0;
-            this.lstNoms.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.grbDevs.Controls.Add(this.dgwDonnees);
+            this.grbDevs.Controls.Add(this.btnEditPwd);
+            this.grbDevs.Controls.Add(this.btnSupprimer);
+            this.grbDevs.Controls.Add(this.btnModifierItem);
+            this.grbDevs.Location = new System.Drawing.Point(13, 13);
+            this.grbDevs.Name = "grbDevs";
+            this.grbDevs.Size = new System.Drawing.Size(535, 177);
+            this.grbDevs.TabIndex = 0;
+            this.grbDevs.TabStop = false;
+            this.grbDevs.Text = "Développeurs :";
             // 
-            // testInsert
+            // grbAjouterDev
             // 
-            this.testInsert.Location = new System.Drawing.Point(281, 201);
-            this.testInsert.Name = "testInsert";
-            this.testInsert.Size = new System.Drawing.Size(75, 20);
-            this.testInsert.TabIndex = 1;
-            this.testInsert.Text = "Insérer";
-            this.testInsert.UseVisualStyleBackColor = true;
-            this.testInsert.Click += new System.EventHandler(this.testInsert_Click);
+            this.grbAjouterDev.Controls.Add(this.lblTel);
+            this.grbAjouterDev.Controls.Add(this.lblMail);
+            this.grbAjouterDev.Controls.Add(this.lblProfil);
+            this.grbAjouterDev.Controls.Add(this.cmbProfil);
+            this.grbAjouterDev.Controls.Add(this.txbTel);
+            this.grbAjouterDev.Controls.Add(this.txbMail);
+            this.grbAjouterDev.Controls.Add(this.txbPrenom);
+            this.grbAjouterDev.Controls.Add(this.lblPrenom);
+            this.grbAjouterDev.Controls.Add(this.lblNom);
+            this.grbAjouterDev.Controls.Add(this.txbNom);
+            this.grbAjouterDev.Controls.Add(this.btnAnnulerDev);
+            this.grbAjouterDev.Controls.Add(this.btnAjouterDev);
+            this.grbAjouterDev.Location = new System.Drawing.Point(13, 196);
+            this.grbAjouterDev.Name = "grbAjouterDev";
+            this.grbAjouterDev.Size = new System.Drawing.Size(535, 105);
+            this.grbAjouterDev.TabIndex = 1;
+            this.grbAjouterDev.TabStop = false;
+            this.grbAjouterDev.Text = "Ajouter un développeur :";
             // 
-            // txbPrenom
+            // grbPassword
             // 
-            this.txbPrenom.Location = new System.Drawing.Point(13, 201);
-            this.txbPrenom.Name = "txbPrenom";
-            this.txbPrenom.Size = new System.Drawing.Size(75, 20);
-            this.txbPrenom.TabIndex = 2;
-            this.txbPrenom.Text = "Prénom";
+            this.grbPassword.Controls.Add(this.btnEnregistrer);
+            this.grbPassword.Controls.Add(this.txbAnnuler);
+            this.grbPassword.Controls.Add(this.txbIndiquezMdp);
+            this.grbPassword.Controls.Add(this.txbRepetezMdp);
+            this.grbPassword.Controls.Add(this.lblRepeterMdp);
+            this.grbPassword.Controls.Add(this.lblindiquezMdp);
+            this.grbPassword.Location = new System.Drawing.Point(13, 307);
+            this.grbPassword.Name = "grbPassword";
+            this.grbPassword.Size = new System.Drawing.Size(535, 85);
+            this.grbPassword.TabIndex = 2;
+            this.grbPassword.TabStop = false;
+            this.grbPassword.Text = "Changer le mot de passe :";
+            this.grbPassword.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lblindiquezMdp
+            // 
+            this.lblindiquezMdp.AutoSize = true;
+            this.lblindiquezMdp.Location = new System.Drawing.Point(7, 20);
+            this.lblindiquezMdp.Name = "lblindiquezMdp";
+            this.lblindiquezMdp.Size = new System.Drawing.Size(103, 26);
+            this.lblindiquezMdp.TabIndex = 0;
+            this.lblindiquezMdp.Text = "Indiquez le nouveau\r\nmot de passe :";
+            // 
+            // lblRepeterMdp
+            // 
+            this.lblRepeterMdp.AutoSize = true;
+            this.lblRepeterMdp.Location = new System.Drawing.Point(7, 56);
+            this.lblRepeterMdp.Name = "lblRepeterMdp";
+            this.lblRepeterMdp.Size = new System.Drawing.Size(76, 26);
+            this.lblRepeterMdp.TabIndex = 1;
+            this.lblRepeterMdp.Text = "Répetez le\r\nmot de passe :";
+            // 
+            // txbRepetezMdp
+            // 
+            this.txbRepetezMdp.Location = new System.Drawing.Point(117, 59);
+            this.txbRepetezMdp.Name = "txbRepetezMdp";
+            this.txbRepetezMdp.Size = new System.Drawing.Size(281, 20);
+            this.txbRepetezMdp.TabIndex = 2;
+            // 
+            // txbIndiquezMdp
+            // 
+            this.txbIndiquezMdp.Location = new System.Drawing.Point(116, 20);
+            this.txbIndiquezMdp.Name = "txbIndiquezMdp";
+            this.txbIndiquezMdp.Size = new System.Drawing.Size(281, 20);
+            this.txbIndiquezMdp.TabIndex = 3;
+            // 
+            // txbAnnuler
+            // 
+            this.txbAnnuler.Location = new System.Drawing.Point(426, 59);
+            this.txbAnnuler.Name = "txbAnnuler";
+            this.txbAnnuler.Size = new System.Drawing.Size(93, 23);
+            this.txbAnnuler.TabIndex = 4;
+            this.txbAnnuler.Text = "Annuler";
+            this.txbAnnuler.UseVisualStyleBackColor = true;
+            this.txbAnnuler.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnEnregistrer
+            // 
+            this.btnEnregistrer.Location = new System.Drawing.Point(426, 17);
+            this.btnEnregistrer.Name = "btnEnregistrer";
+            this.btnEnregistrer.Size = new System.Drawing.Size(93, 23);
+            this.btnEnregistrer.TabIndex = 5;
+            this.btnEnregistrer.Text = "Enregistrer";
+            this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
+            // 
+            // btnModifierItem
+            // 
+            this.btnModifierItem.Location = new System.Drawing.Point(10, 148);
+            this.btnModifierItem.Name = "btnModifierItem";
+            this.btnModifierItem.Size = new System.Drawing.Size(88, 23);
+            this.btnModifierItem.TabIndex = 0;
+            this.btnModifierItem.Text = "Modifier";
+            this.btnModifierItem.UseVisualStyleBackColor = true;
+            // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.Location = new System.Drawing.Point(104, 148);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(88, 23);
+            this.btnSupprimer.TabIndex = 1;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.UseVisualStyleBackColor = true;
+            // 
+            // btnEditPwd
+            // 
+            this.btnEditPwd.Location = new System.Drawing.Point(198, 148);
+            this.btnEditPwd.Name = "btnEditPwd";
+            this.btnEditPwd.Size = new System.Drawing.Size(134, 23);
+            this.btnEditPwd.TabIndex = 2;
+            this.btnEditPwd.Text = "Modifier le mot de passe";
+            this.btnEditPwd.UseVisualStyleBackColor = true;
+            // 
+            // btnAjouterDev
+            // 
+            this.btnAjouterDev.Location = new System.Drawing.Point(6, 76);
+            this.btnAjouterDev.Name = "btnAjouterDev";
+            this.btnAjouterDev.Size = new System.Drawing.Size(93, 23);
+            this.btnAjouterDev.TabIndex = 6;
+            this.btnAjouterDev.Text = "Enregistrer";
+            this.btnAjouterDev.UseVisualStyleBackColor = true;
+            // 
+            // btnAnnulerDev
+            // 
+            this.btnAnnulerDev.Location = new System.Drawing.Point(105, 76);
+            this.btnAnnulerDev.Name = "btnAnnulerDev";
+            this.btnAnnulerDev.Size = new System.Drawing.Size(93, 23);
+            this.btnAnnulerDev.TabIndex = 6;
+            this.btnAnnulerDev.Text = "Annuler";
+            this.btnAnnulerDev.UseVisualStyleBackColor = true;
+            // 
+            // lblNom
+            // 
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(7, 22);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(35, 13);
+            this.lblNom.TabIndex = 7;
+            this.lblNom.Text = "Nom :";
             // 
             // txbNom
             // 
-            this.txbNom.Location = new System.Drawing.Point(94, 201);
+            this.txbNom.Location = new System.Drawing.Point(70, 19);
             this.txbNom.Name = "txbNom";
-            this.txbNom.Size = new System.Drawing.Size(75, 20);
-            this.txbNom.TabIndex = 3;
-            this.txbNom.Text = "Nom";
+            this.txbNom.Size = new System.Drawing.Size(100, 20);
+            this.txbNom.TabIndex = 7;
             // 
-            // txbID
+            // lblPrenom
             // 
-            this.txbID.Location = new System.Drawing.Point(175, 202);
-            this.txbID.Name = "txbID";
-            this.txbID.Size = new System.Drawing.Size(75, 20);
-            this.txbID.TabIndex = 4;
-            this.txbID.Text = "ID";
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(7, 50);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(49, 13);
+            this.lblPrenom.TabIndex = 8;
+            this.lblPrenom.Text = "Prénom :";
+            // 
+            // txbPrenom
+            // 
+            this.txbPrenom.Location = new System.Drawing.Point(70, 45);
+            this.txbPrenom.Name = "txbPrenom";
+            this.txbPrenom.Size = new System.Drawing.Size(100, 20);
+            this.txbPrenom.TabIndex = 9;
+            // 
+            // txbMail
+            // 
+            this.txbMail.Location = new System.Drawing.Point(335, 22);
+            this.txbMail.Name = "txbMail";
+            this.txbMail.Size = new System.Drawing.Size(184, 20);
+            this.txbMail.TabIndex = 10;
+            // 
+            // txbTel
+            // 
+            this.txbTel.Location = new System.Drawing.Point(381, 47);
+            this.txbTel.Name = "txbTel";
+            this.txbTel.Size = new System.Drawing.Size(138, 20);
+            this.txbTel.TabIndex = 11;
+            // 
+            // cmbProfil
+            // 
+            this.cmbProfil.FormattingEnabled = true;
+            this.cmbProfil.Location = new System.Drawing.Point(381, 76);
+            this.cmbProfil.Name = "cmbProfil";
+            this.cmbProfil.Size = new System.Drawing.Size(138, 21);
+            this.cmbProfil.TabIndex = 12;
+            // 
+            // lblProfil
+            // 
+            this.lblProfil.AutoSize = true;
+            this.lblProfil.Location = new System.Drawing.Point(326, 81);
+            this.lblProfil.Name = "lblProfil";
+            this.lblProfil.Size = new System.Drawing.Size(36, 13);
+            this.lblProfil.TabIndex = 13;
+            this.lblProfil.Text = "Profil :";
+            // 
+            // lblMail
+            // 
+            this.lblMail.AutoSize = true;
+            this.lblMail.Location = new System.Drawing.Point(247, 25);
+            this.lblMail.Name = "lblMail";
+            this.lblMail.Size = new System.Drawing.Size(41, 13);
+            this.lblMail.TabIndex = 14;
+            this.lblMail.Text = "E-mail :";
+            // 
+            // lblTel
+            // 
+            this.lblTel.AutoSize = true;
+            this.lblTel.Location = new System.Drawing.Point(247, 50);
+            this.lblTel.Name = "lblTel";
+            this.lblTel.Size = new System.Drawing.Size(115, 13);
+            this.lblTel.TabIndex = 14;
+            this.lblTel.Text = "Numéro de téléphone :";
+            // 
+            // dgwDonnees
+            // 
+            this.dgwDonnees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwDonnees.Location = new System.Drawing.Point(10, 21);
+            this.dgwDonnees.Name = "dgwDonnees";
+            this.dgwDonnees.Size = new System.Drawing.Size(519, 121);
+            this.dgwDonnees.TabIndex = 3;
             // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 314);
-            this.Controls.Add(this.txbID);
-            this.Controls.Add(this.txbNom);
-            this.Controls.Add(this.txbPrenom);
-            this.Controls.Add(this.testInsert);
-            this.Controls.Add(this.lstNoms);
+            this.ClientSize = new System.Drawing.Size(560, 404);
+            this.Controls.Add(this.grbPassword);
+            this.Controls.Add(this.grbAjouterDev);
+            this.Controls.Add(this.grbDevs);
             this.Name = "FrmHabilitations";
             this.Text = "Habilitations V0.3";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.grbDevs.ResumeLayout(false);
+            this.grbAjouterDev.ResumeLayout(false);
+            this.grbAjouterDev.PerformLayout();
+            this.grbPassword.ResumeLayout(false);
+            this.grbPassword.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox lstNoms;
-        private System.Windows.Forms.Button testInsert;
+        private System.Windows.Forms.GroupBox grbDevs;
+        private System.Windows.Forms.GroupBox grbAjouterDev;
+        private System.Windows.Forms.GroupBox grbPassword;
+        private System.Windows.Forms.Button txbAnnuler;
+        private System.Windows.Forms.TextBox txbIndiquezMdp;
+        private System.Windows.Forms.TextBox txbRepetezMdp;
+        private System.Windows.Forms.Label lblRepeterMdp;
+        private System.Windows.Forms.Label lblindiquezMdp;
+        private System.Windows.Forms.Button btnEnregistrer;
+        private System.Windows.Forms.Button btnEditPwd;
+        private System.Windows.Forms.Button btnSupprimer;
+        private System.Windows.Forms.Button btnModifierItem;
+        private System.Windows.Forms.Button btnAjouterDev;
+        private System.Windows.Forms.Label lblTel;
+        private System.Windows.Forms.Label lblMail;
+        private System.Windows.Forms.Label lblProfil;
+        private System.Windows.Forms.ComboBox cmbProfil;
+        private System.Windows.Forms.TextBox txbTel;
+        private System.Windows.Forms.TextBox txbMail;
         private System.Windows.Forms.TextBox txbPrenom;
+        private System.Windows.Forms.Label lblPrenom;
+        private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.TextBox txbNom;
-        private System.Windows.Forms.TextBox txbID;
+        private System.Windows.Forms.Button btnAnnulerDev;
+        private System.Windows.Forms.DataGridView dgwDonnees;
     }
 }
 

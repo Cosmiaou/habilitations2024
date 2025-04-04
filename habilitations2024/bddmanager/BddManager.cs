@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 namespace habilitations2024.bddmanager
 
 {
-    internal class BddManager
+    public class BddManager
     {
         /// <summary>
         /// Instance unique de la classe
