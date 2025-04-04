@@ -77,6 +77,11 @@ namespace habilitations2024.view
         {
 
         }
+
+        private void dgwDonnees_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 
