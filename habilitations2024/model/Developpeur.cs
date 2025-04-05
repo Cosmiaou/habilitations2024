@@ -12,7 +12,7 @@ namespace habilitations2024.model
             this.Iddeveloppeur = iddeveloppeur;
             this.Nom = nom;
             this.Prenom = prenom;   
-            this.tel = tel;
+            this.Tel = tel;
             this.Mail = mail;
             this.Profil = profil;
         }
@@ -20,8 +20,9 @@ namespace habilitations2024.model
         public int Iddeveloppeur { get;  }
         public string Nom { get; set; }    
         public string Prenom { get; set; }
-        public string tel { get; set; }
+        public string Tel { get; set; }
         public Profil Profil { get; set; }
         public string Mail { get; set; }
+        public string Pwd { get; set; }
     }
 }

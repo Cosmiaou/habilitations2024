@@ -19,8 +19,7 @@ namespace habilitations2024.dal
         public List<Developpeur> GetDev()
         {
             List<Developpeur> liste = new List<Developpeur>();
-            //Attention, apparemment rajouter nom du profil dans la requete
-            string requete = "SELECT * FROM developpeur ORDER BY nom"; 
+            string requete = "SELECT * FROM developpeur JOIN profil ON developpeur.idprofil = profil.idprofil;"; 
 
             try
             {
@@ -30,7 +29,8 @@ namespace habilitations2024.dal
                 {
                     foreach (Object[] item in list)
                     {
-                        Developpeur dev = new Developpeur((int)item[0], (string)item[1], (string)item[2], (string)item[3], (string)item[4], (Profil)item[5]);
+                        Profil profil = new Profil((int)item[5], (string)item[6]);
+                        Developpeur dev = new Developpeur((int)item[0], (string)item[1], (string)item[2], (string)item[3], (string)item[4], profil);
                         liste.Add(dev);
                     }
                 }
@@ -43,14 +43,57 @@ namespace habilitations2024.dal
             }
         }
 
-        public void DelDeveloppeur (Developpeur dev) { }
+        public void DelDeveloppeur (Developpeur dev) {
+            string requete = "DELETE FROM developpeur WHERE iddeveloppeur IN (@iddeveloppeur);";
+            
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-//Prendre en compte les paramètres
-        public void AddDeveloppeur (Developpeur dev) { }
+            parameters.Add("@iddeveloppeur", dev.Iddeveloppeur);
 
-        public void UpdateDeveloppeur (Developpeur dev) { }
-//Egalement prendre en compte le hachage
-        public void UpdatePwd(Developpeur dev) { }
+            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+
+        }
+
+        public void AddDeveloppeur (Developpeur dev) {
+            string requete = "INSERT INTO developpeur (idprofil, prenom, nom, tel, mail, idprofil) VALUES (@idprofil, @prenom, @nom, @tel, @mail, @idprofil);";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@iddeveloppeur", dev.Iddeveloppeur);
+            parameters.Add("@prenom", dev.Prenom);
+            parameters.Add("@nom", dev.Nom);
+            parameters.Add("@tel", dev.Tel);
+            parameters.Add("@mail", dev.Mail);
+            parameters.Add("idprofil", dev.Profil.Idprofil);
+
+            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+        }
+
+        public void UpdateDeveloppeur (Developpeur dev) {
+            string requete = "UPDATE developpeur SET prenom = @prenom, nom = @nom, tel = @tel, mail = @mail WHERE iddeveloppeur IN (@iddeveloppeur);";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@iddeveloppeur", dev.Iddeveloppeur);
+            parameters.Add("@prenom", dev.Prenom);
+            parameters.Add("@nom", dev.Nom);
+            parameters.Add("@tel", dev.Tel);
+            parameters.Add("@mail", dev.Mail);
+            parameters.Add("idprofil", dev.Profil.Idprofil);
+
+            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+        }
+
+        public void UpdatePwd(Developpeur dev) {
+            string requete = "UPDATE developpeur SET pwd = SHA2(@pwd, 256) WHERE iddeveloppeur IN (@iddeveloppeur);";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@iddeveloppeur", dev.Iddeveloppeur);
+            parameters.Add("pwd", dev.Pwd);
+
+            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+        }
 
 
     }
