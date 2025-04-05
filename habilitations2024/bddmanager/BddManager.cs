@@ -85,6 +85,13 @@ namespace habilitations2024.bddmanager
             try { commande.ExecuteNonQuery(); } catch (Exception ex) { MessageBox.Show("E08 : Erreur dans reqUpdate"); }
         }
 
+
+        /// <summary>
+        /// Prépare et exécute les requêtes SELECT, et retourne le résultat
+        /// </summary>
+        /// <param name="requete">requète SQL demandée</param>
+        /// <param name="parameters">paramètres sour forme d'un dictionnaire (null par défaut)</param>
+        /// <returns>List Object[] contenant tout ce qui a été demandé par requete</returns>
         public List<Object[]> reqSelect(string requete, Dictionary<string, object> parameters = null)
         {
             MySqlCommand commande = new MySqlCommand(requete, connection);
