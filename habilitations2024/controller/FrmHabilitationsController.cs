@@ -14,17 +14,28 @@ namespace habilitations2024.controller
         private readonly DeveloppeurAccess devAccess;
         private readonly ProfilAccess profAccess;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public FrmHabilitationsController()
         {
             profAccess = new ProfilAccess();
             devAccess = new DeveloppeurAccess();
         }
 
+        /// <summary>
+        /// Reçoit la liste des développeurs
+        /// </summary>
+        /// <returns>List Developpeur</returns>
         public List<Developpeur> GetLesDeveloppeurs()
         {
             return devAccess.GetDev();
         }
 
+        /// <summary>
+        /// Reçoit la liste des profils
+        /// </summary>
+        /// <returns>List Developpeur</returns>
         public List<Profil> GetLesProfils()
         {
             return profAccess.GetProfils();
@@ -37,12 +48,27 @@ namespace habilitations2024.controller
         public void DelDev (Developpeur dev) {
             devAccess.DelDeveloppeur(dev);
         }
+
+        /// <summary>
+        /// Appelle la fonction d'ajout d'un développeur
+        /// </summary>
+        /// <param name="dev">Objet développeur</param>
         public void AddDev (Developpeur dev) {
             devAccess.AddDeveloppeur(dev);
         }
+
+        /// <summary>
+        /// Appelle la fonction de MàJ d'un développeur
+        /// </summary>
+        /// <param name="dev">Objet développeur</param>
         public void UpdateDev (Developpeur dev) {
             devAccess.UpdateDeveloppeur(dev);
         }
+
+        /// <summary>
+        /// Appelle la fonction de MàJ d'un mot de passe
+        /// </summary>
+        /// <param name="dev">Objet développeur</param>
         public void UpdatePwd (Developpeur dev) {
             devAccess.UpdatePwd(dev);
         }

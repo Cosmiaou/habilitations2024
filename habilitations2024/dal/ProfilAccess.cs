@@ -9,16 +9,23 @@ using System.Windows.Forms;
 
 namespace habilitations2024.dal
 {
+
     public class ProfilAccess
     {
         private readonly Access access;
 
-
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public ProfilAccess()
         {
             access = Access.getInstance();
         }
 
+        /// <summary>
+        /// Crée et envoie une requête SQL pour demander la liste des profils
+        /// </summary>
+        /// <returns>Liste des profils</returns>
         public List<Profil> GetProfils()
         {
             List<Profil> liste = new List<Profil>();

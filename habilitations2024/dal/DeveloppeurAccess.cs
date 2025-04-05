@@ -17,6 +17,10 @@ namespace habilitations2024.dal
             access = Access.getInstance();
         }
 
+        /// <summary>
+        /// Crée et envoie une requête SQL pour recevoir la liste des développeurs
+        /// </summary>
+        /// <returns>Liste des développeurs</returns>
         public List<Developpeur> GetDev()
         {
             List<Developpeur> liste = new List<Developpeur>();
@@ -46,6 +50,10 @@ namespace habilitations2024.dal
             }
         }
 
+        /// <summary>
+        /// Crée et envoie une requête de suppression selon l'id de l'objet dev reçu
+        /// </summary>
+        /// <param name="dev"></param>
         public void DelDeveloppeur (Developpeur dev) {
             string requete = "DELETE FROM developpeur WHERE iddeveloppeur IN (@iddeveloppeur);";
             
@@ -57,6 +65,10 @@ namespace habilitations2024.dal
 
         }
 
+        /// <summary>
+        /// Crée et envoie une requête d'ajout grâce à l'objet développeur reçu
+        /// </summary>
+        /// <param name="dev"></param>
         public void AddDeveloppeur (Developpeur dev) {
             string requete = "INSERT INTO developpeur (iddeveloppeur, prenom, nom, tel, mail, idprofil) VALUES (@iddeveloppeur, @prenom, @nom, @tel, @mail, @idprofil);";
 
@@ -72,6 +84,10 @@ namespace habilitations2024.dal
             try { access.Manager.reqUpdate(requete, parameters); } catch { MessageBox.Show("E04 : Erreur lors de l'exécution de la requête"); }
         }
 
+        /// <summary>
+        /// Crée et envoie une requête de mise à jour du développeur envoyé, en se basant sur ses nouveaux paramètres
+        /// </summary>
+        /// <param name="dev"></param>
         public void UpdateDeveloppeur (Developpeur dev) {
             string requete = "UPDATE developpeur SET prenom = @prenom, nom = @nom, tel = @tel, mail = @mail, idprofil = @idprofil WHERE iddeveloppeur IN (@iddeveloppeur);";
 
@@ -87,6 +103,10 @@ namespace habilitations2024.dal
             try { access.Manager.reqUpdate(requete, parameters); } catch { MessageBox.Show("E05 : Erreur lors de l'exécution de la requête"); }
         }
 
+        /// <summary>
+        /// Crée et envoie une requête de modification du mot de passe du développeur, en fonction de son id contenu dans l'objet reçu
+        /// </summary>
+        /// <param name="dev"></param>
         public void UpdatePwd(Developpeur dev) {
             string requete = "UPDATE developpeur SET pwd = SHA2(@pwd, 256) WHERE iddeveloppeur IN (@iddeveloppeur);";
 

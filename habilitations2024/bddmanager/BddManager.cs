@@ -42,7 +42,7 @@ namespace habilitations2024.bddmanager
         }
 
         /// <summary>
-        /// Création d'une seule instance selon le patron singleton. Supporte le multithreading
+        /// Création d'une seule instance selon le patron singleton. Appelle si nécessaire le constructeur, qui crée une connection à la DB
         /// </summary>
         /// <param name="chaineConnection"></param>
         /// <returns></returns>

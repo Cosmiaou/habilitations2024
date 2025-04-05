@@ -11,7 +11,6 @@ using MySql.Data.MySqlClient;
 using habilitations2024.controller;
 using habilitations2024.model;
 
-//La totalité du code présent ici est vouée à disparaitre pour être placée dans des classes spécifiques.
 
 namespace habilitations2024.view
 {

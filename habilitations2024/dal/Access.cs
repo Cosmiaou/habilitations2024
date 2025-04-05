@@ -11,13 +11,27 @@ namespace habilitations2024.dal
 {
     public class Access
     {
-
+        /// <summary>
+        /// Chaine de connection à la base de donnée
+        /// </summary>
         private static readonly string connectionString = "Server=localhost;Database=habilitations;User Id=habilitations;Password=motdepasseuser;";
+        /// <summary>
+        /// Instance unique de la classe
+        /// </summary>
         private static Access instance = null;
+        /// <summary>
+        /// Locker pour supporter le multithread - pas forcément nécessaire
+        /// </summary>
         private static readonly object locker = new object();
 
+        /// <summary>
+        /// Contient une instance de BddManager
+        /// </summary>
         public BddManager Manager { get; }
 
+        /// <summary>
+        /// Crée une instance de BddManager, qui initialise la connexion à la BDD
+        /// </summary>
         private Access()
         {
             try
@@ -31,6 +45,10 @@ namespace habilitations2024.dal
             }
         }
 
+        /// <summary>
+        /// Création d'une seule instance selon le patron singleton. Appelle si nécessaire le constructeur, qui crée une instance de BddManager, qui initialise la connexion à la BDD
+        /// </summary>
+        /// <returns></returns>
         public static Access getInstance()
         {
             if (Access.instance == null)
