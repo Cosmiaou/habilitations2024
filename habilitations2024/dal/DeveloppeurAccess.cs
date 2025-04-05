@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using habilitations2024.model;
 
 namespace habilitations2024.dal
@@ -38,8 +39,9 @@ namespace habilitations2024.dal
             }
             catch (Exception ex)
             {
-                return liste = null;
+                MessageBox.Show("Erreur lors de l'exécution de la requête");
                 Environment.Exit(0);
+                return liste = null;
             }
         }
 
@@ -50,7 +52,7 @@ namespace habilitations2024.dal
 
             parameters.Add("@iddeveloppeur", dev.Iddeveloppeur);
 
-            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+            try { access.Manager.reqUpdate(requete, parameters); } catch { MessageBox.Show("Erreur lors de l'exécution de la requête"); }
 
         }
 
@@ -66,7 +68,7 @@ namespace habilitations2024.dal
             parameters.Add("@mail", dev.Mail);
             parameters.Add("idprofil", dev.Profil.Idprofil);
 
-            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+            try { access.Manager.reqUpdate(requete, parameters); } catch { MessageBox.Show("Erreur lors de l'exécution de la requête"); }
         }
 
         public void UpdateDeveloppeur (Developpeur dev) {
@@ -81,7 +83,7 @@ namespace habilitations2024.dal
             parameters.Add("@mail", dev.Mail);
             parameters.Add("idprofil", dev.Profil.Idprofil);
 
-            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+            try { access.Manager.reqUpdate(requete, parameters); } catch { MessageBox.Show("Erreur lors de l'exécution de la requête"); }
         }
 
         public void UpdatePwd(Developpeur dev) {
@@ -92,7 +94,7 @@ namespace habilitations2024.dal
             parameters.Add("@iddeveloppeur", dev.Iddeveloppeur);
             parameters.Add("pwd", dev.Pwd);
 
-            try { access.Manager.reqUpdate(requete, parameters); } catch { }
+            try { access.Manager.reqUpdate(requete, parameters); } catch { MessageBox.Show("Erreur lors de l'exécution de la requête"); }
         }
 
 

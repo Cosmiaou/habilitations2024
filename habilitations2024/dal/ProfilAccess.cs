@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using habilitations2024.model;
 using habilitations2024.bddmanager;
+using System.Windows.Forms;
 
 namespace habilitations2024.dal
 {
@@ -40,8 +41,9 @@ namespace habilitations2024.dal
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Erreur lors de l'exécution de la requête SQL");
+                Application.Exit();
                 return liste = null;
-                Environment.Exit(0);
             }
         }
     }

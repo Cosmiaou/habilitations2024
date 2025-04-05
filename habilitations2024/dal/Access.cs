@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using habilitations2024.bddmanager;
 
 namespace habilitations2024.dal
@@ -25,6 +26,7 @@ namespace habilitations2024.dal
                 instance = this;
             }
             catch {
+                MessageBox.Show("Erreur lors de la connection à la BDD");
                 Environment.Exit(0);
             }
         }
@@ -43,8 +45,5 @@ namespace habilitations2024.dal
             }
             return Access.instance;
         }
-
-
-
     }
 }

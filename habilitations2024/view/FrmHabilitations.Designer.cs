@@ -231,6 +231,7 @@
             this.btnAjouterDev.TabIndex = 6;
             this.btnAjouterDev.Text = "Enregistrer";
             this.btnAjouterDev.UseVisualStyleBackColor = true;
+            this.btnAjouterDev.Click += new System.EventHandler(this.btnAjouterDev_Click);
             // 
             // grbPassword
             // 
@@ -272,6 +273,7 @@
             // 
             this.txbIndiquezMdp.Location = new System.Drawing.Point(116, 20);
             this.txbIndiquezMdp.Name = "txbIndiquezMdp";
+            this.txbIndiquezMdp.PasswordChar = '*';
             this.txbIndiquezMdp.Size = new System.Drawing.Size(281, 20);
             this.txbIndiquezMdp.TabIndex = 3;
             // 
@@ -279,6 +281,7 @@
             // 
             this.txbRepetezMdp.Location = new System.Drawing.Point(117, 59);
             this.txbRepetezMdp.Name = "txbRepetezMdp";
+            this.txbRepetezMdp.PasswordChar = '*';
             this.txbRepetezMdp.Size = new System.Drawing.Size(281, 20);
             this.txbRepetezMdp.TabIndex = 2;
             // 

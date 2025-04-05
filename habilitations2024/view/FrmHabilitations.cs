@@ -82,6 +82,11 @@ namespace habilitations2024.view
         {
 
         }
+
+        private void btnAjouterDev_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
