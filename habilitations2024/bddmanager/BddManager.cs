@@ -82,7 +82,7 @@ namespace habilitations2024.bddmanager
 
             //Préparation et éxécution
             commande.Prepare();
-            commande.ExecuteNonQuery();
+            try { commande.ExecuteNonQuery(); } catch (Exception ex) { MessageBox.Show("E08 : Erreur dans reqUpdate"); }
         }
 
         public List<Object[]> reqSelect(string requete, Dictionary<string, object> parameters = null)
@@ -102,6 +102,8 @@ namespace habilitations2024.bddmanager
 
             MySqlDataReader reader = commande.ExecuteReader();
             int nbCols = reader.FieldCount;
+
+            Console.WriteLine("Exécution du reader" + nbCols);
 
             List<Object[]> liste = new List<object[]>();
 

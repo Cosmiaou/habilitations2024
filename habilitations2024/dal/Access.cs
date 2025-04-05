@@ -26,7 +26,7 @@ namespace habilitations2024.dal
                 instance = this;
             }
             catch {
-                MessageBox.Show("Erreur lors de la connection à la BDD");
+                MessageBox.Show("E01 : Erreur lors de la connection à la BDD");
                 Environment.Exit(0);
             }
         }

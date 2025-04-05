@@ -30,6 +30,10 @@ namespace habilitations2024.controller
             return profAccess.GetProfils();
         }
 
+        /// <summary>
+        /// Appelle la fonction de suppression d'un développeur
+        /// </summary>
+        /// <param name="dev">Object de type Developpeur</param>
         public void DelDev (Developpeur dev) {
             devAccess.DelDeveloppeur(dev);
         }

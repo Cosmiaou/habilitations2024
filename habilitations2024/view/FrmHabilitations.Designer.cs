@@ -53,6 +53,7 @@
             this.txbRepetezMdp = new System.Windows.Forms.TextBox();
             this.lblRepeterMdp = new System.Windows.Forms.Label();
             this.lblindiquezMdp = new System.Windows.Forms.Label();
+            this.lblConfirm = new System.Windows.Forms.Label();
             this.grbDevs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).BeginInit();
             this.grbAjouterDev.SuspendLayout();
@@ -61,6 +62,7 @@
             // 
             // grbDevs
             // 
+            this.grbDevs.Controls.Add(this.lblConfirm);
             this.grbDevs.Controls.Add(this.dgwDonnees);
             this.grbDevs.Controls.Add(this.btnEditPwd);
             this.grbDevs.Controls.Add(this.btnSupprimer);
@@ -74,16 +76,19 @@
             // 
             // dgwDonnees
             // 
+            this.dgwDonnees.AllowUserToAddRows = false;
+            this.dgwDonnees.AllowUserToDeleteRows = false;
+            this.dgwDonnees.AllowUserToResizeColumns = false;
             this.dgwDonnees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgwDonnees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwDonnees.Location = new System.Drawing.Point(10, 21);
             this.dgwDonnees.MultiSelect = false;
             this.dgwDonnees.Name = "dgwDonnees";
+            this.dgwDonnees.ReadOnly = true;
             this.dgwDonnees.RowHeadersVisible = false;
             this.dgwDonnees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwDonnees.Size = new System.Drawing.Size(519, 121);
             this.dgwDonnees.TabIndex = 3;
-            this.dgwDonnees.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwDonnees_CellContentClick);
             // 
             // btnEditPwd
             // 
@@ -93,6 +98,7 @@
             this.btnEditPwd.TabIndex = 2;
             this.btnEditPwd.Text = "Modifier le mot de passe";
             this.btnEditPwd.UseVisualStyleBackColor = true;
+            this.btnEditPwd.Click += new System.EventHandler(this.btnEditPwd_Click);
             // 
             // btnSupprimer
             // 
@@ -102,6 +108,7 @@
             this.btnSupprimer.TabIndex = 1;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // btnModifierItem
             // 
@@ -111,6 +118,7 @@
             this.btnModifierItem.TabIndex = 0;
             this.btnModifierItem.Text = "Modifier";
             this.btnModifierItem.UseVisualStyleBackColor = true;
+            this.btnModifierItem.Click += new System.EventHandler(this.btnModifierItem_Click);
             // 
             // grbAjouterDev
             // 
@@ -162,6 +170,7 @@
             // 
             // cmbProfil
             // 
+            this.cmbProfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProfil.FormattingEnabled = true;
             this.cmbProfil.Location = new System.Drawing.Point(381, 76);
             this.cmbProfil.Name = "cmbProfil";
@@ -222,6 +231,7 @@
             this.btnAnnulerDev.TabIndex = 6;
             this.btnAnnulerDev.Text = "Annuler";
             this.btnAnnulerDev.UseVisualStyleBackColor = true;
+            this.btnAnnulerDev.Click += new System.EventHandler(this.btnAnnulerDev_Click);
             // 
             // btnAjouterDev
             // 
@@ -241,13 +251,13 @@
             this.grbPassword.Controls.Add(this.txbRepetezMdp);
             this.grbPassword.Controls.Add(this.lblRepeterMdp);
             this.grbPassword.Controls.Add(this.lblindiquezMdp);
+            this.grbPassword.Enabled = false;
             this.grbPassword.Location = new System.Drawing.Point(13, 307);
             this.grbPassword.Name = "grbPassword";
             this.grbPassword.Size = new System.Drawing.Size(535, 85);
             this.grbPassword.TabIndex = 2;
             this.grbPassword.TabStop = false;
             this.grbPassword.Text = "Changer le mot de passe :";
-            this.grbPassword.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnEnregistrer
             // 
@@ -267,7 +277,7 @@
             this.txbAnnuler.TabIndex = 4;
             this.txbAnnuler.Text = "Annuler";
             this.txbAnnuler.UseVisualStyleBackColor = true;
-            this.txbAnnuler.Click += new System.EventHandler(this.button1_Click);
+            this.txbAnnuler.Click += new System.EventHandler(this.txbAnnuler_Click);
             // 
             // txbIndiquezMdp
             // 
@@ -303,6 +313,14 @@
             this.lblindiquezMdp.TabIndex = 0;
             this.lblindiquezMdp.Text = "Indiquez le nouveau\r\nmot de passe :";
             // 
+            // lblConfirm
+            // 
+            this.lblConfirm.AutoSize = true;
+            this.lblConfirm.Location = new System.Drawing.Point(423, 153);
+            this.lblConfirm.Name = "lblConfirm";
+            this.lblConfirm.Size = new System.Drawing.Size(0, 13);
+            this.lblConfirm.TabIndex = 4;
+            // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +333,7 @@
             this.Text = "Habilitations V0.5";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grbDevs.ResumeLayout(false);
+            this.grbDevs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).EndInit();
             this.grbAjouterDev.ResumeLayout(false);
             this.grbAjouterDev.PerformLayout();
@@ -351,6 +370,7 @@
         private System.Windows.Forms.TextBox txbNom;
         private System.Windows.Forms.Button btnAnnulerDev;
         private System.Windows.Forms.DataGridView dgwDonnees;
+        private System.Windows.Forms.Label lblConfirm;
     }
 }
 
