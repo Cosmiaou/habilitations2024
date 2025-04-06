@@ -46,7 +46,7 @@ namespace habilitations2024.dal
                 }
                 return liste;
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("E07 : Erreur lors de l'exécution de la requête SQL");
                 Application.Exit();

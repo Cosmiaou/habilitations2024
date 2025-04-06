@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,7 +43,7 @@ namespace habilitations2024.dal
                 }
                 return liste;
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("E02 : Erreur lors de l'exécution de la requête");
                 Environment.Exit(0);
@@ -118,6 +119,40 @@ namespace habilitations2024.dal
             try { access.Manager.reqUpdate(requete, parameters); } catch { MessageBox.Show("E06 : Erreur lors de l'exécution de la requête"); }
         }
 
+        /// <summary>
+        /// Crée et envoie une requête afin de vérifier si le profil de l'objet dev envoyé est un admin ou non. Return true si vrai
+        /// </summary>
+        /// <param name="admin"></param>
+        /// <returns></returns>
+        public bool ControleAuthentification(Admin admin) {
+            string requete = "SELECT prenom, nom, pwd FROM developpeur WHERE prenom = @prenom AND nom = @nom AND pwd = SHA2(@pwd, 256) AND idprofil = 5;";
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("@prenom", admin.Prenom);
+            parameters.Add("Nom", admin.Nom);
+            parameters.Add("pwd", admin.Pwd);
+
+            try
+            {
+                List<Object[]> retour = access.Manager.reqSelect(requete, parameters);
+
+                if (retour.Count > 0)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+                
+            }
+            catch
+            {
+                MessageBox.Show("E09 : Erreur lors de l'exécution de la requête");
+                Environment.Exit(0);
+                return false;
+            }
+        }
 
     }
 }

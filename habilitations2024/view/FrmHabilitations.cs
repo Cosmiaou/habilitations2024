@@ -45,7 +45,7 @@ namespace habilitations2024.view
         private void remplirCombo()
         {
             List<Profil> liste = controller.GetLesProfils();
-
+            Console.WriteLine("Affichage des profils");
             foreach (Profil profil in liste)
             {
                 cmbProfil.Items.Add(profil);
@@ -59,6 +59,7 @@ namespace habilitations2024.view
         private void afficherTout()
         {
             List<Developpeur> liste = controller.GetLesDeveloppeurs();
+            Console.WriteLine("Affichage des devs");
             dgwDonnees.DataSource = liste;
             dgwDonnees.Columns["Pwd"].Visible = false;
             dgwDonnees.Columns["Iddeveloppeur"].Visible = false;
