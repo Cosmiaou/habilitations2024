@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grbDevs = new System.Windows.Forms.GroupBox();
+            this.lblConfirm = new System.Windows.Forms.Label();
             this.dgwDonnees = new System.Windows.Forms.DataGridView();
             this.btnEditPwd = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.txbRepetezMdp = new System.Windows.Forms.TextBox();
             this.lblRepeterMdp = new System.Windows.Forms.Label();
             this.lblindiquezMdp = new System.Windows.Forms.Label();
-            this.lblConfirm = new System.Windows.Forms.Label();
             this.grbDevs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).BeginInit();
             this.grbAjouterDev.SuspendLayout();
@@ -73,6 +73,14 @@
             this.grbDevs.TabIndex = 0;
             this.grbDevs.TabStop = false;
             this.grbDevs.Text = "Développeurs :";
+            // 
+            // lblConfirm
+            // 
+            this.lblConfirm.AutoSize = true;
+            this.lblConfirm.Location = new System.Drawing.Point(423, 153);
+            this.lblConfirm.Name = "lblConfirm";
+            this.lblConfirm.Size = new System.Drawing.Size(0, 13);
+            this.lblConfirm.TabIndex = 4;
             // 
             // dgwDonnees
             // 
@@ -313,14 +321,6 @@
             this.lblindiquezMdp.TabIndex = 0;
             this.lblindiquezMdp.Text = "Indiquez le nouveau\r\nmot de passe :";
             // 
-            // lblConfirm
-            // 
-            this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Location = new System.Drawing.Point(423, 153);
-            this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(0, 13);
-            this.lblConfirm.TabIndex = 4;
-            // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,7 +330,7 @@
             this.Controls.Add(this.grbAjouterDev);
             this.Controls.Add(this.grbDevs);
             this.Name = "FrmHabilitations";
-            this.Text = "Habilitations V0.85";
+            this.Text = "Habilitations V1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grbDevs.ResumeLayout(false);
             this.grbDevs.PerformLayout();
