@@ -29,7 +29,7 @@ namespace habilitations2024.controller
         /// <returns>List Developpeur</returns>
         public List<Developpeur> GetLesDeveloppeurs()
         {
-            return devAccess.GetDev();
+            return devAccess.GetLesDeveloppeurs();
         }
 
         /// <summary>

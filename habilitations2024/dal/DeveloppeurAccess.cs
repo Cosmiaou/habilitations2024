@@ -22,7 +22,7 @@ namespace habilitations2024.dal
         /// Crée et envoie une requête SQL pour recevoir la liste des développeurs
         /// </summary>
         /// <returns>Liste des développeurs</returns>
-        public List<Developpeur> GetDev()
+        public List<Developpeur> GetLesDeveloppeurs()
         {
             List<Developpeur> liste = new List<Developpeur>();
             string requete = "SELECT * FROM developpeur JOIN profil ON developpeur.idprofil = profil.idprofil;"; 
