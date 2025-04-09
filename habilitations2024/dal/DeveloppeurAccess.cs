@@ -22,15 +22,21 @@ namespace habilitations2024.dal
         /// Crée et envoie une requête SQL pour recevoir la liste des développeurs
         /// </summary>
         /// <returns>Liste des développeurs</returns>
-        public List<Developpeur> GetLesDeveloppeurs()
+        public List<Developpeur> GetLesDeveloppeurs(Profil profilRecu)
         {
             List<Developpeur> liste = new List<Developpeur>();
-            string requete = "SELECT * FROM developpeur JOIN profil ON developpeur.idprofil = profil.idprofil;"; 
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            string requete = "SELECT * FROM developpeur JOIN profil ON developpeur.idprofil = profil.idprofil";
+
+            if (profilRecu.Idprofil != 0)
+            {
+                requete += " WHERE developpeur.idprofil = @idprofil";
+                parameters.Add("@idprofil", profilRecu.Idprofil);
+            }
 
             try
             {
-                List<Object[]> list = access.Manager.reqSelect(requete);
-                Console.WriteLine("Appel de la requête validé");
+                List<Object[]> list = access.Manager.reqSelect(requete, parameters);
 
                 if (list != null && list.Count > 0)
                 {
@@ -45,7 +51,7 @@ namespace habilitations2024.dal
             }
             catch
             {
-                MessageBox.Show("E02 : Erreur lors de l'exécution de la requête");
+                MessageBox.Show("E02 : Erreur lors de l'exécution de la requête d'affichage");
                 Environment.Exit(0);
                 return liste = null;
             }

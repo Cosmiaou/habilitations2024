@@ -54,6 +54,9 @@
             this.txbRepetezMdp = new System.Windows.Forms.TextBox();
             this.lblRepeterMdp = new System.Windows.Forms.Label();
             this.lblindiquezMdp = new System.Windows.Forms.Label();
+            this.txtProfilAffichage = new System.Windows.Forms.Label();
+            this.cmbProfilAffichage = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.grbDevs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).BeginInit();
             this.grbAjouterDev.SuspendLayout();
@@ -62,6 +65,8 @@
             // 
             // grbDevs
             // 
+            this.grbDevs.Controls.Add(this.cmbProfilAffichage);
+            this.grbDevs.Controls.Add(this.txtProfilAffichage);
             this.grbDevs.Controls.Add(this.lblConfirm);
             this.grbDevs.Controls.Add(this.dgwDonnees);
             this.grbDevs.Controls.Add(this.btnEditPwd);
@@ -321,11 +326,40 @@
             this.lblindiquezMdp.TabIndex = 0;
             this.lblindiquezMdp.Text = "Indiquez le nouveau\r\nmot de passe :";
             // 
+            // txtProfilAffichage
+            // 
+            this.txtProfilAffichage.AutoSize = true;
+            this.txtProfilAffichage.Location = new System.Drawing.Point(354, 153);
+            this.txtProfilAffichage.Name = "txtProfilAffichage";
+            this.txtProfilAffichage.Size = new System.Drawing.Size(69, 13);
+            this.txtProfilAffichage.TabIndex = 5;
+            this.txtProfilAffichage.Text = "Choisir profil :";
+            // 
+            // cmbProfilAffichage
+            // 
+            this.cmbProfilAffichage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProfilAffichage.FormattingEnabled = true;
+            this.cmbProfilAffichage.Location = new System.Drawing.Point(426, 148);
+            this.cmbProfilAffichage.Name = "cmbProfilAffichage";
+            this.cmbProfilAffichage.Size = new System.Drawing.Size(100, 21);
+            this.cmbProfilAffichage.TabIndex = 15;
+            this.cmbProfilAffichage.SelectedIndexChanged += new System.EventHandler(this.cmbProfilAffichage_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(203, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
+            // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 404);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.grbPassword);
             this.Controls.Add(this.grbAjouterDev);
             this.Controls.Add(this.grbDevs);
@@ -340,6 +374,7 @@
             this.grbPassword.ResumeLayout(false);
             this.grbPassword.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -371,6 +406,9 @@
         private System.Windows.Forms.Button btnAnnulerDev;
         private System.Windows.Forms.DataGridView dgwDonnees;
         private System.Windows.Forms.Label lblConfirm;
+        private System.Windows.Forms.ComboBox cmbProfilAffichage;
+        private System.Windows.Forms.Label txtProfilAffichage;
+        private System.Windows.Forms.Label label1;
     }
 }
 

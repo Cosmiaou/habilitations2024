@@ -18,6 +18,7 @@ namespace habilitations2024.view
     {
         private FrmHabilitationsController controller;
         private bool modif = false;
+        private readonly Profil provilVide = new Profil(0, "");
 
         /// <summary>
         /// Constructeur de la classe, initialise les composants
@@ -35,31 +36,37 @@ namespace habilitations2024.view
         private void Form1_Load(object sender, EventArgs e)
         {
             controller = new FrmHabilitationsController();
-            afficherTout();
             remplirCombo();
+            afficherDevs();
         }
 
         /// <summary>
-        /// Rempli cmbProfil et place son index à 0
+        /// Rempli cmbProfil et cmbProfilAffichage via un objet vide et via ceux acquis par GetLesProfils(), et place l’index de chaque à 0
         /// </summary>
         private void remplirCombo()
         {
+            cmbProfil.Items.Add(provilVide);
+            cmbProfilAffichage.Items.Add(provilVide);
+
             List<Profil> liste = controller.GetLesProfils();
-            Console.WriteLine("Affichage des profils");
+
             foreach (Profil profil in liste)
             {
                 cmbProfil.Items.Add(profil);
+                cmbProfilAffichage.Items.Add(profil);
             }
             cmbProfil.SelectedIndex = 0;
+            cmbProfilAffichage.SelectedIndex = 0;
         }
 
         /// <summary>
-        /// Rempli dgwDonnees via GetLesDeveloppeurs() du controlleur et masque deux colonnes
+        /// Rempli dgwDonnees via GetLesDeveloppeurs(), qui prends en paramètres l'objet de cmbProfilAffichage du controlleur et masque deux colonnes
         /// </summary>
-        private void afficherTout()
+        private void afficherDevs()
         {
-            List<Developpeur> liste = controller.GetLesDeveloppeurs();
-            Console.WriteLine("Affichage des devs");
+            Profil profil = (Profil)cmbProfilAffichage.SelectedItem;
+            List<Developpeur> liste = controller.GetLesDeveloppeurs(profil);
+
             dgwDonnees.DataSource = liste;
             dgwDonnees.Columns["Pwd"].Visible = false;
             dgwDonnees.Columns["Iddeveloppeur"].Visible = false;
@@ -80,6 +87,7 @@ namespace habilitations2024.view
                 controller.UpdatePwd(objet);
 
                 grbPassword.Enabled = false;
+                grbDevs.Enabled = true;
             } else
             {
                 MessageBox.Show("Erreur : les deux lignes doivent être remplies et égales. Le mot de passe est sensible à la casse.");
@@ -114,7 +122,7 @@ namespace habilitations2024.view
                     Developpeur dev = new Developpeur(0, nom, prenom, tel, email, profil);
                     controller.AddDev(dev);
                 }
-                afficherTout();
+                afficherDevs();
             }
             else { MessageBox.Show("Veuillez remplir toutes les cases"); }
         }
@@ -142,6 +150,7 @@ namespace habilitations2024.view
 
                 grbDevs.Enabled = true;
                 grbAjouterDev.Text = "Ajouter un developpeur :";
+                modif = false;
             }
         }
 
@@ -168,7 +177,7 @@ namespace habilitations2024.view
             if (objet != null)
             {
                 controller.DelDev(objet);
-                afficherTout();
+                afficherDevs();
             }
             else
             {
@@ -184,6 +193,7 @@ namespace habilitations2024.view
         private void btnModifierItem_Click(object sender, EventArgs e)
         {
             modif = true;
+            grbDevs.Enabled = false;
             grbAjouterDev.Text = "Modifiez un développeur :";
         }
 
@@ -195,6 +205,7 @@ namespace habilitations2024.view
         private void btnEditPwd_Click(object sender, EventArgs e)
         {
             grbPassword.Enabled = true;
+            grbDevs.Enabled = false;
         }
 
         /// <summary>
@@ -207,6 +218,7 @@ namespace habilitations2024.view
             txbIndiquezMdp.Text = "";
             txbRepetezMdp.Text = "";
             grbPassword.Enabled = false;
+            grbDevs.Enabled = true;
         }
 
         /// <summary>
@@ -224,6 +236,11 @@ namespace habilitations2024.view
                 txbMail.Text = "";
                 cmbProfil.SelectedIndex = 0;
             }
+        }
+
+        private void cmbProfilAffichage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            afficherDevs();
         }
     }
 }
