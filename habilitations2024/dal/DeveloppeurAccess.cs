@@ -26,13 +26,14 @@ namespace habilitations2024.dal
         {
             List<Developpeur> liste = new List<Developpeur>();
             Dictionary<string, object> parameters = new Dictionary<string, object>();
+            
             string requete = "SELECT * FROM developpeur JOIN profil ON developpeur.idprofil = profil.idprofil";
 
             if (profilRecu.Idprofil != 0)
             {
                 requete += " WHERE developpeur.idprofil = @idprofil";
                 parameters.Add("@idprofil", profilRecu.Idprofil);
-            }
+            } 
 
             try
             {
@@ -49,10 +50,8 @@ namespace habilitations2024.dal
                 }
                 return liste;
             }
-            catch
-            {
-                MessageBox.Show("E02 : Erreur lors de l'exécution de la requête d'affichage");
-                Environment.Exit(0);
+            catch (Exception ex) {
+                MessageBox.Show("E02 : Erreur lors de l'exécution de la requête d'affichage " + ex.Message);
                 return liste = null;
             }
         }
