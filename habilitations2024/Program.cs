@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using habilitations2024.view;
+using mediatek86.view;
 
-namespace habilitations2024
+namespace mediatek86
 {
     internal static class Program
     {

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using habilitations2024.controller;
-using habilitations2024.model;
+using mediatek86.controller;
+using mediatek86.model;
 
 
-namespace habilitations2024.view
+namespace mediatek86.view
 {
     public partial class FrmHabilitations : Form
     {
@@ -28,7 +28,7 @@ namespace habilitations2024.view
         }
 
         /// <summary>
-        /// Chargement du formulaire. Initialise controller, appelle les fonctions pour remplir cmbProfil et dgwDonnees
+        /// Chargement du formulaire. Initialise controller, appelle les fonctions pour remplir cmbService et dgwDonnees
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -44,13 +44,13 @@ namespace habilitations2024.view
         /// </summary>
         private void remplirCombo()
         {
-            List<Profil> liste = controller.GetLesProfils();
-            Console.WriteLine("Affichage des profils");
-            foreach (Profil profil in liste)
+            cmbService.Items.Add("");
+            List<Service> liste = controller.GetLesServices();
+            foreach (Service service in liste)
             {
-                cmbProfil.Items.Add(profil);
+                cmbService.Items.Add(service);
             }
-            cmbProfil.SelectedIndex = 0;
+            cmbService.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -58,66 +58,11 @@ namespace habilitations2024.view
         /// </summary>
         private void afficherTout()
         {
-            List<Developpeur> liste = controller.GetLesDeveloppeurs();
-            Console.WriteLine("Affichage des devs");
+            List<Personnel> liste = controller.GetLesPerso();
             dgwDonnees.DataSource = liste;
-            dgwDonnees.Columns["Pwd"].Visible = false;
-            dgwDonnees.Columns["Iddeveloppeur"].Visible = false;
+            dgwDonnees.Columns["Idpersonnel"].Visible = false;
         }
 
-        /// <summary>
-        /// Vérifie que les deux champs de texte sont égaux. Si oui, récupère l'objet de dgwDonnees, lui
-        /// affecte un nouveau mot de passe, et l'envoie à controller.UpdatePwd(). Désactive grbPwd
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnEnregistrer_Click(object sender, EventArgs e)
-        {
-            if (txbRepetezMdp.Text.Equals(txbIndiquezMdp.Text) && txbIndiquezMdp != null && txbRepetezMdp != null)
-            {
-                Developpeur objet = (Developpeur)dgwDonnees.CurrentRow.DataBoundItem;
-                objet.Pwd = txbIndiquezMdp.Text;
-                controller.UpdatePwd(objet);
-
-                grbPassword.Enabled = false;
-            } else
-            {
-                MessageBox.Show("Erreur : les deux lignes doivent être remplies et égales. Le mot de passe est sensible à la casse.");
-            }
-            
-        }
-
-        /// <summary>
-        /// Lors du clic sur AjouterDev, vérifie via verifierChamps() si tous les champs sont remplies. Si oui, initialise les
-        /// champs avec les paramètres et vérifie s'il s'agit d'une modification ou non. Si oui, appelle
-        /// modifierDev() avec les bons champs. Sinon, ajoute le développeur via controller.AddDev() et
-        /// met à jour dgwDonnees
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAjouterDev_Click(object sender, EventArgs e)
-        {
-            if (verifierChamps())
-            {
-                string prenom = txbPrenom.Text;
-                string nom = txbNom.Text;
-                string tel = txbTel.Text;
-                string email = txbMail.Text;
-                Profil profil = (Profil)cmbProfil.SelectedItem;
-
-                if (modif)
-                {
-                    modifierDev(prenom, nom, tel, email, profil);
-                } 
-                else
-                {
-                    Developpeur dev = new Developpeur(0, nom, prenom, tel, email, profil);
-                    controller.AddDev(dev);
-                }
-                afficherTout();
-            }
-            else { MessageBox.Show("Veuillez remplir toutes les cases"); }
-        }
 
         /// <summary>
         /// Reçoit les paramètres nécessaires et demande à modifier l'élement sélectionné dans dgwDonnees.
@@ -127,31 +72,46 @@ namespace habilitations2024.view
         /// <param name="tel"></param>
         /// <param name="email"></param>
         /// <param name="profil"></param>
-        private void modifierDev(string prenom, string nom, string tel, string email, Profil profil) {
-            Developpeur objet = (Developpeur)dgwDonnees.CurrentRow.DataBoundItem;
-            grbDevs.Enabled = false;
+        private void modifier(string prenom, string nom, string tel, string email, Service service) {
+            Personnel objet = (Personnel)dgwDonnees.CurrentRow.DataBoundItem;
+            grbPersonnel.Enabled = false;
 
             if (objet == null) { MessageBox.Show("Merci de sélectionner une ligne !"); } else
             {
-                objet.Profil = profil;
+                objet.Service = service;
                 objet.Prenom = prenom;
                 objet.Nom = nom;
                 objet.Tel = tel;
                 objet.Mail = email;
-                controller.UpdateDev(objet);
+                controller.UpdateItem(objet);
 
-                grbDevs.Enabled = true;
-                grbAjouterDev.Text = "Ajouter un developpeur :";
+                grbPersonnel.Enabled = true;
+                grbAjouterPerso.Text = "Ajouter un employé :";
             }
         }
 
         /// <summary>
-        /// Vérifie si les champs du grbAjouterDev sont vides. Si oui, return false.
+        /// Vérifie si les champs du grbAjouterPerso sont vides. Si oui, return false.
+        /// </summary>
+        /// <returns></returns>
+        private void remplissageCase()
+        {
+            Personnel objet = (Personnel)dgwDonnees.CurrentRow.DataBoundItem;
+
+            txbMail.Text = objet.Mail;
+            txbTel.Text = objet.Tel;
+            txbNom.Text = objet.Nom;
+            txbPrenom.Text = objet.Prenom;
+            cmbService.SelectedIndex = objet.Service.Idservice;
+        }
+
+        /// <summary>
+        /// Vérifie si les champs du grbAjouterPerso sont vides. Si oui, return false.
         /// </summary>
         /// <returns></returns>
         private bool verifierChamps()
         {
-            if (txbNom.Text.Equals("") || txbPrenom.Text.Equals("") || txbTel.Text.Equals("") || txbMail.Text.Equals("") || cmbProfil.SelectedIndex == -1) { 
+            if (txbNom.Text.Equals("") || txbPrenom.Text.Equals("") || txbTel.Text.Equals("") || txbMail.Text.Equals("") || cmbService.SelectedIndex == 0) { 
                    return false; }
             else { return true;  }
         }
@@ -164,10 +124,10 @@ namespace habilitations2024.view
         /// <param name="e"></param>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            Developpeur objet = (Developpeur)dgwDonnees.CurrentRow.DataBoundItem;
+            Personnel objet = (Personnel)dgwDonnees.CurrentRow.DataBoundItem;
             if (objet != null)
             {
-                controller.DelDev(objet);
+                controller.DelItem(objet);
                 afficherTout();
             }
             else
@@ -184,37 +144,34 @@ namespace habilitations2024.view
         private void btnModifierItem_Click(object sender, EventArgs e)
         {
             modif = true;
-            grbAjouterDev.Text = "Modifiez un développeur :";
+            grbAjouterPerso.Text = "Modifiez un personnel :";
         }
 
-        /// <summary>
-        /// Autorise la modification du mot de passe
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnEditPwd_Click(object sender, EventArgs e)
+        private void btnAjouterPerso_Click(object sender, EventArgs e)
         {
-            grbPassword.Enabled = true;
+            if (verifierChamps())
+            {
+                string prenom = txbPrenom.Text;
+                string nom = txbNom.Text;
+                string tel = txbTel.Text;
+                string email = txbMail.Text;
+                Service profil = (Service)cmbService.SelectedItem;
+
+                if (modif)
+                {
+                    modifier(prenom, nom, tel, email, profil);
+                }
+                else
+                {
+                    Personnel dev = new Personnel(0, nom, prenom, tel, email, profil);
+                    controller.AddItem(dev);
+                }
+                afficherTout();
+            }
+            else { MessageBox.Show("Veuillez remplir toutes les cases"); }
         }
 
-        /// <summary>
-        /// Vide les tout grbPwd et interdit la modification du mot de passe
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txbAnnuler_Click(object sender, EventArgs e)
-        {
-            txbIndiquezMdp.Text = "";
-            txbRepetezMdp.Text = "";
-            grbPassword.Enabled = false;
-        }
-
-        /// <summary>
-        /// Demande confirmation, puis vide tous les champs de grbAjouterDev
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAnnulerDev_Click(object sender, EventArgs e)
+        private void btnAnnulerPerso_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Voulez-vous vraiment annuler ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -222,8 +179,18 @@ namespace habilitations2024.view
                 txbNom.Text = "";
                 txbTel.Text = "";
                 txbMail.Text = "";
-                cmbProfil.SelectedIndex = 0;
+                cmbService.SelectedIndex = 0;
             }
+        }
+
+        private void btnAbsence_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgwDonnees_MouseClick(object sender, MouseEventArgs e)
+        {
+            remplissageCase();
         }
     }
 }

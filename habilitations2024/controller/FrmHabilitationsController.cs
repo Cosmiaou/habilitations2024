@@ -3,74 +3,66 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using habilitations2024.dal;
-using habilitations2024.model;
+using mediatek86.dal;
+using mediatek86.model;
 using Mysqlx.Crud;
 
-namespace habilitations2024.controller
+namespace mediatek86.controller
 {
     public class FrmHabilitationsController
     {
-        private readonly DeveloppeurAccess devAccess;
-        private readonly ProfilAccess profAccess;
+        private readonly PersonnelAccess persoAccess;
+        private readonly ServiceAccess servAccess;
 
         /// <summary>
         /// Constructeur
         /// </summary>
         public FrmHabilitationsController()
         {
-            profAccess = new ProfilAccess();
-            devAccess = new DeveloppeurAccess();
+            servAccess = new ServiceAccess();
+            persoAccess = new PersonnelAccess();
         }
 
         /// <summary>
-        /// Reçoit la liste des développeurs
+        /// Reçoit la liste du personnel
         /// </summary>
         /// <returns>List Developpeur</returns>
-        public List<Developpeur> GetLesDeveloppeurs()
+        public List<Personnel> GetLesPerso()
         {
-            return devAccess.GetLesDeveloppeurs();
+            return persoAccess.GetLesPersonnels();
         }
 
         /// <summary>
-        /// Reçoit la liste des profils
+        /// Reçoit la liste des services
         /// </summary>
         /// <returns>List Developpeur</returns>
-        public List<Profil> GetLesProfils()
+        public List<Service> GetLesServices()
         {
-            return profAccess.GetProfils();
+            return servAccess.GetItems();
         }
 
         /// <summary>
         /// Appelle la fonction de suppression d'un développeur
         /// </summary>
-        /// <param name="dev">Object de type Developpeur</param>
-        public void DelDev (Developpeur dev) {
-            devAccess.DelDeveloppeur(dev);
+        /// <param name="perso">Object de type Developpeur</param>
+        public void DelItem (Personnel perso) {
+            persoAccess.DelItem(perso);
         }
 
         /// <summary>
         /// Appelle la fonction d'ajout d'un développeur
         /// </summary>
-        /// <param name="dev">Objet développeur</param>
-        public void AddDev (Developpeur dev) {
-            devAccess.AddDeveloppeur(dev);
+        /// <param name="perso">Objet développeur</param>
+        public void AddItem (Personnel perso) {
+            persoAccess.AddItem(perso);
         }
 
         /// <summary>
         /// Appelle la fonction de MàJ d'un développeur
         /// </summary>
-        /// <param name="dev">Objet développeur</param>
-        public void UpdateDev (Developpeur dev) {
-            devAccess.UpdateDeveloppeur(dev);
-        }
-
-        /// <summary>
-        /// Appelle la fonction de MàJ d'un mot de passe
-        /// </summary>
-        /// <param name="dev">Objet développeur</param>
-        public void UpdatePwd (Developpeur dev) {
-            devAccess.UpdatePwd(dev);
+        /// <param name="perso">Objet développeur</param>
+        public void UpdateItem (Personnel perso) {
+            persoAccess.UpdateItem(perso);
         }
     }
 }

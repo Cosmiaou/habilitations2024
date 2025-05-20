@@ -5,16 +5,16 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using habilitations2024.bddmanager;
+using mediatek86.bddmanager;
 
-namespace habilitations2024.dal
+namespace mediatek86.dal
 {
     public class Access
     {
         /// <summary>
         /// Chaine de connection à la base de donnée
         /// </summary>
-        private static readonly string connectionString = "Server=localhost;Database=habilitations;User Id=habilitations;Password=motdepasseuser;";
+        private static readonly string connectionString = "Server=localhost;Database=mediatek86;User Id=appmediatek_PC1;Password=7P!qGm#d#8T9#nrb;";
         /// <summary>
         /// Instance unique de la classe
         /// </summary>

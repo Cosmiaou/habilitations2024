@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace habilitations2024.bddmanager
+namespace mediatek86.bddmanager
 
 {
     public class BddManager
@@ -106,6 +106,7 @@ namespace habilitations2024.bddmanager
             }
 
             commande.Prepare();
+
 
             MySqlDataReader reader = commande.ExecuteReader();
             int nbCols = reader.FieldCount;

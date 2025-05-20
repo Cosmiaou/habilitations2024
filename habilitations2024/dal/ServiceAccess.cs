@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using habilitations2024.model;
-using habilitations2024.bddmanager;
+using mediatek86.model;
+using mediatek86.bddmanager;
 using System.Windows.Forms;
 
-namespace habilitations2024.dal
+namespace mediatek86.dal
 {
 
-    public class ProfilAccess
+    public class ServiceAccess
     {
         private readonly Access access;
 
         /// <summary>
         /// Constructeur
         /// </summary>
-        public ProfilAccess()
+        public ServiceAccess()
         {
             access = Access.getInstance();
         }
@@ -26,10 +26,10 @@ namespace habilitations2024.dal
         /// Crée et envoie une requête SQL pour demander la liste des profils
         /// </summary>
         /// <returns>Liste des profils</returns>
-        public List<Profil> GetProfils()
+        public List<Service> GetItems()
         {
-            List<Profil> liste = new List<Profil>();
-            string requete = "SELECT * FROM profil";
+            List<Service> liste = new List<Service>();
+            string requete = "SELECT * FROM service";
 
             try
             {
@@ -39,9 +39,9 @@ namespace habilitations2024.dal
                 {
                     foreach (Object[] item in list)
                     {
-                        Profil profil = new Profil((int)item[0], (string)item[1]);
+                        Service service = new Service((int)item[0], (string)item[1]);
 
-                        liste.Add(profil);
+                        liste.Add(service);
                     }
                 }
                 return liste;

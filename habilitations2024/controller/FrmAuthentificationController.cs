@@ -3,31 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using habilitations2024.dal;
-using habilitations2024.model;
+using mediatek86.dal;
+using mediatek86.model;
 
-namespace habilitations2024.controller
+namespace mediatek86.controller
 {
     internal class FrmAuthentificationController
     {
-        private readonly DeveloppeurAccess devAccess;
+        /// <summary>
+        /// Ici utiliser un profil responsable
+        /// </summary>
+        private readonly ResponsableAccess Access;
 
         /// <summary>
         /// Constructeur
         /// </summary>
         public FrmAuthentificationController()
         {
-            devAccess = new DeveloppeurAccess();
+            Access = new ResponsableAccess();
         }
 
         /// <summary>
-        /// Appelle la fonction ControleAuthentification() de la classe DeveloppeurAccess
+        /// Appelle la fonction ControleAuthentification() de la classe ResponsableAccess
         /// </summary>
         /// <param name="admin">Objet de type Admin</param>
         /// <returns>TRUE or FALSE</returns>
-        public bool ControleAuthentification(Admin admin)
+        public bool ControleAuthentification(Responsable admin)
         {
-            bool reponse = devAccess.ControleAuthentification(admin);
+            bool reponse = Access.ControleAuthentification(admin);
             return reponse;
         }
 

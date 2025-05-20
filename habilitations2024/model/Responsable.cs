@@ -4,30 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace habilitations2024.model
+namespace mediatek86.model
 {
-    public class Admin
+    public class Responsable
     {
         /// <summary>
         /// Constructeur
         /// </summary>
-        /// <param name="nom"></param>
-        /// <param name="prenom"></param>
+        /// <param name="login"></param>
         /// <param name="pwd"></param>
-        public Admin(string nom, string prenom, string pwd) {
-            this.Nom = nom;
-            this.Prenom = prenom;
+        public Responsable(string login, string pwd) {
+            this.Login = login;
             this.Pwd = pwd;
         }
 
         /// <summary>
-        /// Nom de l'admin
-        /// </summary>
-        public string Nom { get; }
-        /// <summary>
         /// Prenom de l'admin
         /// </summary>
-        public string Prenom { get; }
+        public string Login { get; }
         /// <summary>
         /// Mot de passe de l'admin
         /// </summary>

@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using habilitations2024.controller;
-using habilitations2024.model;
+using mediatek86.controller;
+using mediatek86.model;
 
-namespace habilitations2024.view
+namespace mediatek86.view
 {
     public partial class FrmAuthentification : Form
     {
@@ -45,23 +45,22 @@ namespace habilitations2024.view
         /// <param name="e"></param>
         private void btnConnection_Click(object sender, EventArgs e)
         {
-            if (txbNom.Text.Equals("") || txbPrenom.Text.Equals("") || txbPwd.Text.Equals(""))
+            if (txbLogin.Text.Equals("") || txbPwd.Text.Equals(""))
             {
                 MessageBox.Show("Merci de remplir toutes les informations.");
             }
             else {
-                string nom = txbNom.Text;
-                string prenom = txbPrenom.Text;
+                string login = txbLogin.Text;
                 string pwd = txbPwd.Text;
 
-                Admin admin = new Admin(nom, prenom, pwd);
+                Responsable responsable = new Responsable(login, pwd);
 
-                if (controller.ControleAuthentification(admin))
+                if (controller.ControleAuthentification(responsable))
                 {
                     FrmHabilitations frmHabilitations = new FrmHabilitations();
                     frmHabilitations.ShowDialog();
                     this.Close();
-                }
+                } 
                 else if (compteurErreur >= 5)
                 {
                     MessageBox.Show("Veuillez réessayer plus tard.");
@@ -70,10 +69,16 @@ namespace habilitations2024.view
                 else
                 {
                     compteurErreur++;
-                    MessageBox.Show("Erreur : le mot de passe incorrect, l'utilisateur n'existe pas, ou le profil n'est pas admin.");
+                    lblErreur.Text = "Erreur : mot de passe ou profil incorrect";
                     btnConnection.Focus();
                 }
             }
         }
+
+        private void btnProbleme_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

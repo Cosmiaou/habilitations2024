@@ -1,4 +1,4 @@
-﻿namespace habilitations2024.view
+﻿namespace mediatek86.view
 {
     partial class FrmHabilitations
     {
@@ -28,51 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grbDevs = new System.Windows.Forms.GroupBox();
+            this.grbPersonnel = new System.Windows.Forms.GroupBox();
+            this.btnAbsence = new System.Windows.Forms.Button();
             this.lblConfirm = new System.Windows.Forms.Label();
             this.dgwDonnees = new System.Windows.Forms.DataGridView();
-            this.btnEditPwd = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnModifierItem = new System.Windows.Forms.Button();
-            this.grbAjouterDev = new System.Windows.Forms.GroupBox();
+            this.grbAjouterPerso = new System.Windows.Forms.GroupBox();
             this.lblTel = new System.Windows.Forms.Label();
             this.lblMail = new System.Windows.Forms.Label();
-            this.lblProfil = new System.Windows.Forms.Label();
-            this.cmbProfil = new System.Windows.Forms.ComboBox();
+            this.lblService = new System.Windows.Forms.Label();
+            this.cmbService = new System.Windows.Forms.ComboBox();
             this.txbTel = new System.Windows.Forms.TextBox();
             this.txbMail = new System.Windows.Forms.TextBox();
             this.txbPrenom = new System.Windows.Forms.TextBox();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.txbNom = new System.Windows.Forms.TextBox();
-            this.btnAnnulerDev = new System.Windows.Forms.Button();
-            this.btnAjouterDev = new System.Windows.Forms.Button();
-            this.grbPassword = new System.Windows.Forms.GroupBox();
-            this.btnEnregistrer = new System.Windows.Forms.Button();
-            this.txbAnnuler = new System.Windows.Forms.Button();
-            this.txbIndiquezMdp = new System.Windows.Forms.TextBox();
-            this.txbRepetezMdp = new System.Windows.Forms.TextBox();
-            this.lblRepeterMdp = new System.Windows.Forms.Label();
-            this.lblindiquezMdp = new System.Windows.Forms.Label();
-            this.grbDevs.SuspendLayout();
+            this.btnAnnulerPersonnel = new System.Windows.Forms.Button();
+            this.btnAjouterPersonnel = new System.Windows.Forms.Button();
+            this.grbPersonnel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).BeginInit();
-            this.grbAjouterDev.SuspendLayout();
-            this.grbPassword.SuspendLayout();
+            this.grbAjouterPerso.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grbDevs
+            // grbPersonnel
             // 
-            this.grbDevs.Controls.Add(this.lblConfirm);
-            this.grbDevs.Controls.Add(this.dgwDonnees);
-            this.grbDevs.Controls.Add(this.btnEditPwd);
-            this.grbDevs.Controls.Add(this.btnSupprimer);
-            this.grbDevs.Controls.Add(this.btnModifierItem);
-            this.grbDevs.Location = new System.Drawing.Point(13, 13);
-            this.grbDevs.Name = "grbDevs";
-            this.grbDevs.Size = new System.Drawing.Size(535, 177);
-            this.grbDevs.TabIndex = 0;
-            this.grbDevs.TabStop = false;
-            this.grbDevs.Text = "Développeurs :";
+            this.grbPersonnel.Controls.Add(this.btnAbsence);
+            this.grbPersonnel.Controls.Add(this.lblConfirm);
+            this.grbPersonnel.Controls.Add(this.dgwDonnees);
+            this.grbPersonnel.Controls.Add(this.btnSupprimer);
+            this.grbPersonnel.Controls.Add(this.btnModifierItem);
+            this.grbPersonnel.Location = new System.Drawing.Point(13, 13);
+            this.grbPersonnel.Name = "grbPersonnel";
+            this.grbPersonnel.Size = new System.Drawing.Size(553, 177);
+            this.grbPersonnel.TabIndex = 0;
+            this.grbPersonnel.TabStop = false;
+            this.grbPersonnel.Text = "Personnels";
+            // 
+            // btnAbsence
+            // 
+            this.btnAbsence.Location = new System.Drawing.Point(425, 148);
+            this.btnAbsence.Name = "btnAbsence";
+            this.btnAbsence.Size = new System.Drawing.Size(120, 23);
+            this.btnAbsence.TabIndex = 5;
+            this.btnAbsence.Text = "Voir les absences";
+            this.btnAbsence.UseVisualStyleBackColor = true;
+            this.btnAbsence.Click += new System.EventHandler(this.btnAbsence_Click);
             // 
             // lblConfirm
             // 
@@ -95,18 +97,9 @@
             this.dgwDonnees.ReadOnly = true;
             this.dgwDonnees.RowHeadersVisible = false;
             this.dgwDonnees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgwDonnees.Size = new System.Drawing.Size(519, 121);
+            this.dgwDonnees.Size = new System.Drawing.Size(535, 121);
             this.dgwDonnees.TabIndex = 3;
-            // 
-            // btnEditPwd
-            // 
-            this.btnEditPwd.Location = new System.Drawing.Point(198, 148);
-            this.btnEditPwd.Name = "btnEditPwd";
-            this.btnEditPwd.Size = new System.Drawing.Size(134, 23);
-            this.btnEditPwd.TabIndex = 2;
-            this.btnEditPwd.Text = "Modifier le mot de passe";
-            this.btnEditPwd.UseVisualStyleBackColor = true;
-            this.btnEditPwd.Click += new System.EventHandler(this.btnEditPwd_Click);
+            this.dgwDonnees.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgwDonnees_MouseClick);
             // 
             // btnSupprimer
             // 
@@ -128,31 +121,31 @@
             this.btnModifierItem.UseVisualStyleBackColor = true;
             this.btnModifierItem.Click += new System.EventHandler(this.btnModifierItem_Click);
             // 
-            // grbAjouterDev
+            // grbAjouterPerso
             // 
-            this.grbAjouterDev.Controls.Add(this.lblTel);
-            this.grbAjouterDev.Controls.Add(this.lblMail);
-            this.grbAjouterDev.Controls.Add(this.lblProfil);
-            this.grbAjouterDev.Controls.Add(this.cmbProfil);
-            this.grbAjouterDev.Controls.Add(this.txbTel);
-            this.grbAjouterDev.Controls.Add(this.txbMail);
-            this.grbAjouterDev.Controls.Add(this.txbPrenom);
-            this.grbAjouterDev.Controls.Add(this.lblPrenom);
-            this.grbAjouterDev.Controls.Add(this.lblNom);
-            this.grbAjouterDev.Controls.Add(this.txbNom);
-            this.grbAjouterDev.Controls.Add(this.btnAnnulerDev);
-            this.grbAjouterDev.Controls.Add(this.btnAjouterDev);
-            this.grbAjouterDev.Location = new System.Drawing.Point(13, 196);
-            this.grbAjouterDev.Name = "grbAjouterDev";
-            this.grbAjouterDev.Size = new System.Drawing.Size(535, 105);
-            this.grbAjouterDev.TabIndex = 1;
-            this.grbAjouterDev.TabStop = false;
-            this.grbAjouterDev.Text = "Ajouter un développeur :";
+            this.grbAjouterPerso.Controls.Add(this.lblTel);
+            this.grbAjouterPerso.Controls.Add(this.lblMail);
+            this.grbAjouterPerso.Controls.Add(this.lblService);
+            this.grbAjouterPerso.Controls.Add(this.cmbService);
+            this.grbAjouterPerso.Controls.Add(this.txbTel);
+            this.grbAjouterPerso.Controls.Add(this.txbMail);
+            this.grbAjouterPerso.Controls.Add(this.txbPrenom);
+            this.grbAjouterPerso.Controls.Add(this.lblPrenom);
+            this.grbAjouterPerso.Controls.Add(this.lblNom);
+            this.grbAjouterPerso.Controls.Add(this.txbNom);
+            this.grbAjouterPerso.Controls.Add(this.btnAnnulerPersonnel);
+            this.grbAjouterPerso.Controls.Add(this.btnAjouterPersonnel);
+            this.grbAjouterPerso.Location = new System.Drawing.Point(13, 196);
+            this.grbAjouterPerso.Name = "grbAjouterPerso";
+            this.grbAjouterPerso.Size = new System.Drawing.Size(553, 105);
+            this.grbAjouterPerso.TabIndex = 1;
+            this.grbAjouterPerso.TabStop = false;
+            this.grbAjouterPerso.Text = "Ajouter un personnel :";
             // 
             // lblTel
             // 
             this.lblTel.AutoSize = true;
-            this.lblTel.Location = new System.Drawing.Point(247, 50);
+            this.lblTel.Location = new System.Drawing.Point(273, 50);
             this.lblTel.Name = "lblTel";
             this.lblTel.Size = new System.Drawing.Size(115, 13);
             this.lblTel.TabIndex = 14;
@@ -161,40 +154,40 @@
             // lblMail
             // 
             this.lblMail.AutoSize = true;
-            this.lblMail.Location = new System.Drawing.Point(247, 25);
+            this.lblMail.Location = new System.Drawing.Point(273, 25);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(41, 13);
             this.lblMail.TabIndex = 14;
             this.lblMail.Text = "E-mail :";
             // 
-            // lblProfil
+            // lblService
             // 
-            this.lblProfil.AutoSize = true;
-            this.lblProfil.Location = new System.Drawing.Point(326, 81);
-            this.lblProfil.Name = "lblProfil";
-            this.lblProfil.Size = new System.Drawing.Size(36, 13);
-            this.lblProfil.TabIndex = 13;
-            this.lblProfil.Text = "Profil :";
+            this.lblService.AutoSize = true;
+            this.lblService.Location = new System.Drawing.Point(352, 81);
+            this.lblService.Name = "lblService";
+            this.lblService.Size = new System.Drawing.Size(49, 13);
+            this.lblService.TabIndex = 13;
+            this.lblService.Text = "Service :";
             // 
-            // cmbProfil
+            // cmbService
             // 
-            this.cmbProfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProfil.FormattingEnabled = true;
-            this.cmbProfil.Location = new System.Drawing.Point(381, 76);
-            this.cmbProfil.Name = "cmbProfil";
-            this.cmbProfil.Size = new System.Drawing.Size(138, 21);
-            this.cmbProfil.TabIndex = 12;
+            this.cmbService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbService.FormattingEnabled = true;
+            this.cmbService.Location = new System.Drawing.Point(407, 76);
+            this.cmbService.Name = "cmbService";
+            this.cmbService.Size = new System.Drawing.Size(138, 21);
+            this.cmbService.TabIndex = 12;
             // 
             // txbTel
             // 
-            this.txbTel.Location = new System.Drawing.Point(381, 47);
+            this.txbTel.Location = new System.Drawing.Point(407, 47);
             this.txbTel.Name = "txbTel";
             this.txbTel.Size = new System.Drawing.Size(138, 20);
             this.txbTel.TabIndex = 11;
             // 
             // txbMail
             // 
-            this.txbMail.Location = new System.Drawing.Point(335, 22);
+            this.txbMail.Location = new System.Drawing.Point(361, 22);
             this.txbMail.Name = "txbMail";
             this.txbMail.Size = new System.Drawing.Size(184, 20);
             this.txbMail.TabIndex = 10;
@@ -231,146 +224,66 @@
             this.txbNom.Size = new System.Drawing.Size(100, 20);
             this.txbNom.TabIndex = 7;
             // 
-            // btnAnnulerDev
+            // btnAnnulerPersonnel
             // 
-            this.btnAnnulerDev.Location = new System.Drawing.Point(105, 76);
-            this.btnAnnulerDev.Name = "btnAnnulerDev";
-            this.btnAnnulerDev.Size = new System.Drawing.Size(93, 23);
-            this.btnAnnulerDev.TabIndex = 6;
-            this.btnAnnulerDev.Text = "Annuler";
-            this.btnAnnulerDev.UseVisualStyleBackColor = true;
-            this.btnAnnulerDev.Click += new System.EventHandler(this.btnAnnulerDev_Click);
+            this.btnAnnulerPersonnel.Location = new System.Drawing.Point(105, 76);
+            this.btnAnnulerPersonnel.Name = "btnAnnulerPersonnel";
+            this.btnAnnulerPersonnel.Size = new System.Drawing.Size(93, 23);
+            this.btnAnnulerPersonnel.TabIndex = 6;
+            this.btnAnnulerPersonnel.Text = "Annuler";
+            this.btnAnnulerPersonnel.UseVisualStyleBackColor = true;
+            this.btnAnnulerPersonnel.Click += new System.EventHandler(this.btnAnnulerPerso_Click);
             // 
-            // btnAjouterDev
+            // btnAjouterPersonnel
             // 
-            this.btnAjouterDev.Location = new System.Drawing.Point(6, 76);
-            this.btnAjouterDev.Name = "btnAjouterDev";
-            this.btnAjouterDev.Size = new System.Drawing.Size(93, 23);
-            this.btnAjouterDev.TabIndex = 6;
-            this.btnAjouterDev.Text = "Enregistrer";
-            this.btnAjouterDev.UseVisualStyleBackColor = true;
-            this.btnAjouterDev.Click += new System.EventHandler(this.btnAjouterDev_Click);
-            // 
-            // grbPassword
-            // 
-            this.grbPassword.Controls.Add(this.btnEnregistrer);
-            this.grbPassword.Controls.Add(this.txbAnnuler);
-            this.grbPassword.Controls.Add(this.txbIndiquezMdp);
-            this.grbPassword.Controls.Add(this.txbRepetezMdp);
-            this.grbPassword.Controls.Add(this.lblRepeterMdp);
-            this.grbPassword.Controls.Add(this.lblindiquezMdp);
-            this.grbPassword.Enabled = false;
-            this.grbPassword.Location = new System.Drawing.Point(13, 307);
-            this.grbPassword.Name = "grbPassword";
-            this.grbPassword.Size = new System.Drawing.Size(535, 85);
-            this.grbPassword.TabIndex = 2;
-            this.grbPassword.TabStop = false;
-            this.grbPassword.Text = "Changer le mot de passe :";
-            // 
-            // btnEnregistrer
-            // 
-            this.btnEnregistrer.Location = new System.Drawing.Point(426, 17);
-            this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(93, 23);
-            this.btnEnregistrer.TabIndex = 5;
-            this.btnEnregistrer.Text = "Enregistrer";
-            this.btnEnregistrer.UseVisualStyleBackColor = true;
-            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
-            // 
-            // txbAnnuler
-            // 
-            this.txbAnnuler.Location = new System.Drawing.Point(426, 59);
-            this.txbAnnuler.Name = "txbAnnuler";
-            this.txbAnnuler.Size = new System.Drawing.Size(93, 23);
-            this.txbAnnuler.TabIndex = 4;
-            this.txbAnnuler.Text = "Annuler";
-            this.txbAnnuler.UseVisualStyleBackColor = true;
-            this.txbAnnuler.Click += new System.EventHandler(this.txbAnnuler_Click);
-            // 
-            // txbIndiquezMdp
-            // 
-            this.txbIndiquezMdp.Location = new System.Drawing.Point(116, 20);
-            this.txbIndiquezMdp.Name = "txbIndiquezMdp";
-            this.txbIndiquezMdp.PasswordChar = '*';
-            this.txbIndiquezMdp.Size = new System.Drawing.Size(281, 20);
-            this.txbIndiquezMdp.TabIndex = 3;
-            // 
-            // txbRepetezMdp
-            // 
-            this.txbRepetezMdp.Location = new System.Drawing.Point(117, 59);
-            this.txbRepetezMdp.Name = "txbRepetezMdp";
-            this.txbRepetezMdp.PasswordChar = '*';
-            this.txbRepetezMdp.Size = new System.Drawing.Size(281, 20);
-            this.txbRepetezMdp.TabIndex = 2;
-            // 
-            // lblRepeterMdp
-            // 
-            this.lblRepeterMdp.AutoSize = true;
-            this.lblRepeterMdp.Location = new System.Drawing.Point(7, 56);
-            this.lblRepeterMdp.Name = "lblRepeterMdp";
-            this.lblRepeterMdp.Size = new System.Drawing.Size(76, 26);
-            this.lblRepeterMdp.TabIndex = 1;
-            this.lblRepeterMdp.Text = "Répetez le\r\nmot de passe :";
-            // 
-            // lblindiquezMdp
-            // 
-            this.lblindiquezMdp.AutoSize = true;
-            this.lblindiquezMdp.Location = new System.Drawing.Point(7, 20);
-            this.lblindiquezMdp.Name = "lblindiquezMdp";
-            this.lblindiquezMdp.Size = new System.Drawing.Size(103, 26);
-            this.lblindiquezMdp.TabIndex = 0;
-            this.lblindiquezMdp.Text = "Indiquez le nouveau\r\nmot de passe :";
+            this.btnAjouterPersonnel.Location = new System.Drawing.Point(6, 76);
+            this.btnAjouterPersonnel.Name = "btnAjouterPersonnel";
+            this.btnAjouterPersonnel.Size = new System.Drawing.Size(93, 23);
+            this.btnAjouterPersonnel.TabIndex = 6;
+            this.btnAjouterPersonnel.Text = "Enregistrer";
+            this.btnAjouterPersonnel.UseVisualStyleBackColor = true;
+            this.btnAjouterPersonnel.Click += new System.EventHandler(this.btnAjouterPerso_Click);
             // 
             // FrmHabilitations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 404);
-            this.Controls.Add(this.grbPassword);
-            this.Controls.Add(this.grbAjouterDev);
-            this.Controls.Add(this.grbDevs);
+            this.ClientSize = new System.Drawing.Size(578, 314);
+            this.Controls.Add(this.grbAjouterPerso);
+            this.Controls.Add(this.grbPersonnel);
             this.Name = "FrmHabilitations";
-            this.Text = "Habilitations V1";
+            this.Text = "MediaTek86 - gestion du personnel V0.1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.grbDevs.ResumeLayout(false);
-            this.grbDevs.PerformLayout();
+            this.grbPersonnel.ResumeLayout(false);
+            this.grbPersonnel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDonnees)).EndInit();
-            this.grbAjouterDev.ResumeLayout(false);
-            this.grbAjouterDev.PerformLayout();
-            this.grbPassword.ResumeLayout(false);
-            this.grbPassword.PerformLayout();
+            this.grbAjouterPerso.ResumeLayout(false);
+            this.grbAjouterPerso.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox grbDevs;
-        private System.Windows.Forms.GroupBox grbAjouterDev;
-        private System.Windows.Forms.GroupBox grbPassword;
-        private System.Windows.Forms.Button txbAnnuler;
-        private System.Windows.Forms.TextBox txbIndiquezMdp;
-        private System.Windows.Forms.TextBox txbRepetezMdp;
-        private System.Windows.Forms.Label lblRepeterMdp;
-        private System.Windows.Forms.Label lblindiquezMdp;
-        private System.Windows.Forms.Button btnEnregistrer;
-        private System.Windows.Forms.Button btnEditPwd;
+        private System.Windows.Forms.GroupBox grbPersonnel;
+        private System.Windows.Forms.GroupBox grbAjouterPerso;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnModifierItem;
-        private System.Windows.Forms.Button btnAjouterDev;
+        private System.Windows.Forms.Button btnAjouterPersonnel;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.Label lblMail;
-        private System.Windows.Forms.Label lblProfil;
-        private System.Windows.Forms.ComboBox cmbProfil;
+        private System.Windows.Forms.Label lblService;
+        private System.Windows.Forms.ComboBox cmbService;
         private System.Windows.Forms.TextBox txbTel;
         private System.Windows.Forms.TextBox txbMail;
         private System.Windows.Forms.TextBox txbPrenom;
         private System.Windows.Forms.Label lblPrenom;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.TextBox txbNom;
-        private System.Windows.Forms.Button btnAnnulerDev;
+        private System.Windows.Forms.Button btnAnnulerPersonnel;
         private System.Windows.Forms.DataGridView dgwDonnees;
         private System.Windows.Forms.Label lblConfirm;
+        private System.Windows.Forms.Button btnAbsence;
     }
 }
 

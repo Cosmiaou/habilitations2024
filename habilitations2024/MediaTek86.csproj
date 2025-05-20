@@ -6,12 +6,27 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5CAFAA90-99CB-4263-B17D-DCE5DFE1347A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>habilitations2024</RootNamespace>
-    <AssemblyName>habilitations2024</AssemblyName>
+    <RootNamespace>mediatek86</RootNamespace>
+    <AssemblyName>MediaTek86</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,11 +69,12 @@
     <Compile Include="controller\FrmAuthentificationController.cs" />
     <Compile Include="controller\FrmHabilitationsController.cs" />
     <Compile Include="dal\Access.cs" />
-    <Compile Include="dal\DeveloppeurAccess.cs" />
-    <Compile Include="dal\ProfilAccess.cs" />
-    <Compile Include="model\Admin.cs" />
-    <Compile Include="model\Developpeur.cs" />
-    <Compile Include="model\Profil.cs" />
+    <Compile Include="dal\PersonnelAccess.cs" />
+    <Compile Include="dal\ResponsableAccess.cs" />
+    <Compile Include="dal\ServiceAccess.cs" />
+    <Compile Include="model\Responsable.cs" />
+    <Compile Include="model\Personnel.cs" />
+    <Compile Include="model\Service.cs" />
     <Compile Include="view\FrmAuthentification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,6 +118,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
